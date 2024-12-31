@@ -12,7 +12,7 @@ namespace UAS_DB_PamerYuk
         [STAThread]
         static void Main()
         {
-            Connection connection;
+            Connection connection; 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -20,7 +20,6 @@ namespace UAS_DB_PamerYuk
             try
             {
                 connection = new Connection();
-                MessageBox.Show("Connection success!");
 
                 MainForm mainForm = new MainForm(connection);
                 Application.Run(mainForm);

@@ -18,7 +18,7 @@ namespace Class_PamerYuk
         #endregion
 
         #region Property
-        public int Id
+        public int Id 
         {
             get => id;
             private set
