@@ -26,7 +26,7 @@ namespace UAS_DB_PamerYuk
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ContentService service = new ContentService(connection.DbConnection);
+            ContentService service = new ContentService(connection);
             ContentUC_P uc = new ContentUC_P(service, this);
 
             currentMenu = uc;
@@ -40,7 +40,7 @@ namespace UAS_DB_PamerYuk
             homeButton.Image = Properties.Resources.HomeButton_clicked;
             ResetButton();
 
-            ContentService service = new ContentService(connection.DbConnection);
+            ContentService service = new ContentService(connection);
             ContentUC_P uc = new ContentUC_P(service, this);
 
             mainPanel.Controls.Remove(currentMenu);
@@ -55,7 +55,7 @@ namespace UAS_DB_PamerYuk
             searchButton.Image = Properties.Resources.SearchButton_clicked;
             ResetButton();
 
-            FriendshipService service = new FriendshipService(connection.DbConnection);
+            FriendshipService service = new FriendshipService(connection);
             SearchUC_P uc = new SearchUC_P(service, this);
 
             mainPanel.Controls.Remove(currentMenu);
@@ -70,7 +70,7 @@ namespace UAS_DB_PamerYuk
             chatButton.Image = Properties.Resources.ChatButton_clicked;
             ResetButton();
 
-            ChatService service = new ChatService(connection.DbConnection);
+            ChatService service = new ChatService(connection);
             ChatListUC_P uc = new ChatListUC_P(service, this);
 
             mainPanel.Controls.Remove(currentMenu);
@@ -85,7 +85,7 @@ namespace UAS_DB_PamerYuk
             profileButton.Image = Properties.Resources.ProfileButton_clicked;
             ResetButton();
 
-            UserManagerService service = new UserManagerService(connection.DbConnection);
+            UserManagerService service = new UserManagerService(connection);
             ProfileUC_P uc = new ProfileUC_P(service, this);
 
             mainPanel.Controls.Remove(currentMenu);

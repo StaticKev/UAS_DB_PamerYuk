@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Class_PamerYuk
 {
@@ -7,38 +6,22 @@ namespace Class_PamerYuk
     {
         #region Data Member
         private string username;
+        private string password;
         private DateTime tglLahir;
         private string noKTP;
         private string foto;
         private Kota kota;
-        private List<KisahHidup> daftarKisahHidup;
-        private List<User> daftarTeman;
-        private List<Konten> daftarKonten;
         #endregion
 
         #region Constructor
-        public User(string username, DateTime tglLahir, string noKTP, string foto, Kota kota)
+        public User(string username, string password, DateTime tglLahir, string noKTP, string foto, Kota kota)
         {
             Username = username;
+            Password = password;
             TglLahir = tglLahir;
             NoKTP = noKTP;
             Foto = foto;
             Kota = kota;
-            DaftarKisahHidup = new List<KisahHidup>();
-            DaftarTeman = new List<User>();
-            daftarKonten = new List<Konten>();
-        }
-
-        public User(string username, DateTime tglLahir, string noKTP, string foto, Kota kota, List<KisahHidup> kisahHidup, List<User> daftarTeman, List<Konten> daftarKonten)
-        {
-            Username = username;
-            TglLahir = tglLahir;
-            NoKTP = noKTP;
-            Foto = foto;
-            Kota = kota;
-            DaftarKisahHidup = daftarKisahHidup;
-            DaftarTeman = daftarTeman;
-            DaftarKonten = daftarKonten;
         }
         #endregion
 
@@ -53,6 +36,16 @@ namespace Class_PamerYuk
                 else if (value.Length > 40) throw new ArgumentException("Panjang username tidak boleh melebihi 40 karakter!");
                 else username = value;
             } 
+        }
+        public string Password
+        {
+            get => password;
+            private set
+            {
+                if (value == null) throw new ArgumentNullException("Class: User | Password can't be null!");
+                else if (value == "") throw new ArgumentException("Password tidak boleh kosong!");
+                else password = value;
+            }
         }
         public DateTime TglLahir 
         { 
@@ -93,86 +86,6 @@ namespace Class_PamerYuk
                 if (value == null) throw new ArgumentNullException("Class: User | Kota can't be null!");
                 else kota = value;
             } 
-        }
-        public List<KisahHidup> DaftarKisahHidup 
-        { 
-            get => daftarKisahHidup; 
-            private set
-            {
-                if (value == null) throw new ArgumentNullException("Class: User | DaftarKisahHidup can't be null!");
-                else daftarKisahHidup = value;
-            }
-        }
-        public List<User> DaftarTeman 
-        { 
-            get => daftarTeman; 
-            private set
-            {
-                if (value == null) throw new ArgumentNullException("Class: User | DaftarTeman can't be null!");
-                else daftarTeman = value;
-            } 
-        }
-        public List<Konten> DaftarKonten 
-        { 
-            get => daftarKonten; 
-            private set
-            {
-                if (value == null) throw new ArgumentNullException("Class: User | DaftarKonten can't be null!");
-                else daftarKonten = value;
-            } 
-        }
-        #endregion
-
-        #region Method
-        public void AddKisahHidup(KisahHidup k)
-        {
-            DaftarKisahHidup.Add(k);   
-        }
-
-        public void AddFriend(User u)
-        {
-            DaftarTeman.Add(u);
-        }
-
-        public void AddContent(Konten k)
-        {
-            DaftarKonten.Add(k);
-        }
-
-        public void RemoveKisahHidup(KisahHidup k)
-        {
-            foreach (KisahHidup temp in DaftarKisahHidup)
-            {
-                if (temp.Organisasi.Id == k.Organisasi.Id)
-                {
-                    DaftarKisahHidup.Remove(temp);
-                    break;
-                }
-            }
-        }
-
-        public void RemoveFriend (User u)
-        {
-            foreach (User temp in DaftarTeman)
-            {
-                if (temp.Username == u.Username)
-                {
-                    DaftarTeman.Remove(temp);
-                    break;
-                }
-            }
-        }
-
-        public void DeleteContent(Konten k)
-        {
-            foreach (Konten temp in DaftarKonten)
-            {
-                if (temp.Id == k.Id)
-                {
-                    DaftarKonten.Remove(temp);
-                    break;
-                }
-            }
         }
         #endregion
     }

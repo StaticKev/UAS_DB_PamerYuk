@@ -7,15 +7,11 @@ namespace UAS_DB_PamerYuk.F2_Friendship
     {
         private readonly UserDAO userDAO;
         private readonly KontenDAO kontenDAO;
-        private readonly KomenDAO komenDAO;
-        private readonly TagDAO tagDAO;
 
-        public ContentService(MySqlConnection connection)
+        public ContentService(Connection connection)
         {
             userDAO = new UserDAO(connection);
             kontenDAO = new KontenDAO(connection);
-            komenDAO = new KomenDAO(connection);
-            tagDAO = new TagDAO(connection);
         }
     }
 }

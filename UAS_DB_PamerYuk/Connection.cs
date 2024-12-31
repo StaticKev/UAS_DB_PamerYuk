@@ -7,7 +7,7 @@ namespace UAS_DB_PamerYuk
     {
         private MySqlConnection dbConnection;
 
-        public MySqlConnection DbConnection { get => dbConnection; private set => dbConnection = value; }
+        private MySqlConnection DbConnection { get => dbConnection; set => dbConnection = value; }
 
         public Connection()
         {
@@ -24,14 +24,19 @@ namespace UAS_DB_PamerYuk
 
             string conString = "Server=" + pS + ";Database=" + pD + ";Uid=" + pU + ";Pwd=" + pP + ";";
             DbConnection = new MySqlConnection(conString);
-
-            GetConnection();
         }
 
-        public void GetConnection()
+        public MySqlConnection GetConnection()
         {
             if (DbConnection.State == System.Data.ConnectionState.Open) DbConnection.Close();
             DbConnection.Open();
+
+            return DbConnection;
+        }
+
+        public void Close()
+        {
+            if (DbConnection.State == System.Data.ConnectionState.Open) DbConnection.Close();
         }
     }
 }

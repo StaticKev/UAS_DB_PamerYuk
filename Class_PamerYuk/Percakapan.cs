@@ -14,11 +14,14 @@ namespace Class_PamerYuk
         #endregion
 
         #region Constructor
-        public Percakapan(int id, User pengirim, User penerima, string pesan, DateTime waktuKirim)
+        public Percakapan(int id, string pesan, DateTime waktuKirim)
         {
             Id = id;
-            Pengirim = pengirim;
-            Penerima = penerima;
+            Pesan = pesan;
+            WaktuKirim = waktuKirim;
+        }
+        public Percakapan(string pesan, DateTime waktuKirim, User pengirim, User penerima)
+        {
             Pesan = pesan;
             WaktuKirim = waktuKirim;
         }
@@ -34,8 +37,8 @@ namespace Class_PamerYuk
                 else id = value;
             }
         }
-        public User Pengirim 
-        { 
+        public User Pengirim
+        {
             get => pengirim;
             set
             {
@@ -43,14 +46,14 @@ namespace Class_PamerYuk
                 else pengirim = value;
             }
         }
-        public User Penerima 
-        { 
-            get => penerima; 
+        public User Penerima
+        {
+            get => penerima;
             set
             {
                 if (value == null) throw new ArgumentNullException("Class: Percakapan | Penerima can't be null!");
                 else penerima = value;
-            } 
+            }
         }
         public string Pesan 
         { 

@@ -7,7 +7,7 @@ namespace UAS_DB_PamerYuk.F4_Content
     {
         private readonly UserDAO userDAO;
 
-        public FriendshipService(MySqlConnection connection)
+        public FriendshipService(Connection connection)
         {
             userDAO = new UserDAO(connection);
         }

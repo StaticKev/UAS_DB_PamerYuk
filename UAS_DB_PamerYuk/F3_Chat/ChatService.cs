@@ -8,7 +8,7 @@ namespace UAS_DB_PamerYuk.F1_UserManager
         private readonly UserDAO userDAO;
         private readonly PercakapanDAO percakapanDAO;
 
-        public ChatService(MySqlConnection connection)
+        public ChatService(Connection connection)
         {
             userDAO = new UserDAO(connection);
             percakapanDAO = new PercakapanDAO(connection);

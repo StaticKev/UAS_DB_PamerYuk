@@ -6,16 +6,18 @@ namespace Class_PamerYuk
     {
         #region Data Member
         private Organisasi organisasi;
-        private short thawal;
-        private short thakhir;
+        private User user;
+        private string thawal;
+        private string thakhir;
         private string deskripsi;
         #endregion
 
         #region Constructor
-        public KisahHidup(Organisasi organisasi, short thawal, short thakhir, string deskripsi)
+        public KisahHidup(Organisasi organisasi, User user, string thawal, string thakhir, string deskripsi)
         {
             if (thawal.CompareTo(thakhir) >= 0) throw new ArgumentException("Tahun akhir harus setelah tahun awal!");
 
+            User = user;
             Organisasi = organisasi;
             Thawal = thawal;
             Thakhir = thakhir;
@@ -33,21 +35,30 @@ namespace Class_PamerYuk
                 else organisasi = value;
             }
         }
-        public short Thawal 
+        public User User
+        {
+            get => user;
+            private set
+            {
+                if (value == null) throw new ArgumentNullException("Class Konten | User can't be null!");
+                else user = value;
+            }
+        }
+        public string Thawal 
         {
             get => thawal;
             private set
             {
-                if (value < 1) throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be negative!");
+                if (value == null || value == "") throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be null or empty!");
                 thawal = value;
             }
         }
-        public short Thakhir 
+        public string Thakhir 
         {
             get => thakhir;
             private set
             {
-                if (value < 1) throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be negative!");
+                if (value == null) throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be null!");
                 thakhir = value;
             }
         }

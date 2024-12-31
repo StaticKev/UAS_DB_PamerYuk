@@ -55,11 +55,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\KomenDAO.cs" />
-    <Compile Include="DAO\KontenDAO.cs" />
-    <Compile Include="DAO\PercakapanDAO.cs" />
-    <Compile Include="DAO\TagDAO.cs" />
-    <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="Persistence\FileRepo.cs" />
+    <Compile Include="Persistence\KisahHidupDAO.cs" />
+    <Compile Include="Persistence\KontenDAO.cs" />
+    <Compile Include="Persistence\KotaDAO.cs" />
+    <Compile Include="Persistence\PercakapanDAO.cs" />
+    <Compile Include="Persistence\OrganisasiDAO.cs" />
+    <Compile Include="Persistence\UserDAO.cs" />
     <Compile Include="F1_UserManager\View\LoginUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
