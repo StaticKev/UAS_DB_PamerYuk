@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Class_PamerYuk;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace UAS_DB_PamerYuk.Repository.DAO
 {
@@ -60,6 +61,35 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 Kota kota = new Kota(id, nama);
 
                 result = new User(username, tglLahir, noKTP, foto, kota);
+            }
+
+            connection.Close();
+            return result;
+        }
+
+        public List<User> Read_FindByUsername(string username)
+        {
+            List<User> result = new List<User>();
+
+            string sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                            FROM `user` u
+                            INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
+                            WHERE `username` = '{username}'";
+            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
+            MySqlDataReader resultSet = cmd.ExecuteReader();
+
+            while (resultSet.Read())
+            {
+                username = resultSet.GetString("username");
+                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
+                string noKTP = resultSet.GetString("noktp");
+                string foto = resultSet.GetString("foto");
+
+                int id = resultSet.GetInt32("id");
+                string nama = resultSet.GetString("nama");
+                Kota kota = new Kota(id, nama);
+
+                result.Add(new User(username, tglLahir, noKTP, foto, kota));
             }
 
             connection.Close();

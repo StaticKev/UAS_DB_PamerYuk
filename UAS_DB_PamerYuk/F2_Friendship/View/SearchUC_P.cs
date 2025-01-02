@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Class_PamerYuk;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using UAS_DB_PamerYuk.F4_Content;
 using UAS_DB_PamerYuk.Utility;
@@ -20,6 +22,65 @@ namespace UAS_DB_PamerYuk.F2_Friendship.View
         private void SearchUC_Load(object sender, EventArgs e)
         {
             BackColor = ColorUtil.palette["soft-white"];
+        }
+
+        private void buttonPencarian_Click(object sender, EventArgs e)
+        {
+            // Bersihkan DataGridView sebelum menambahkan data baru
+            dataGridViewPencarian.Rows.Clear();
+
+            string namaOrganisasi = textBoxPencarian.Text;
+
+            if (string.IsNullOrEmpty(namaOrganisasi))
+            {
+                MessageBox.Show("Masukkan nama organisasi terlebih dahulu!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // ========================================================================================
+                // List<Organisasi> organisasis = service.GetOrganizations();
+                // List<User> userByUsername = service.FindUserByUsername(namaOrganisasi);
+                // List<User> userByNamaOrganisasi = service.FindUserByOrganisasi(namaOrganisasi);
+                // ========================================================================================
+
+                // Jalankan logika CariTeman
+                List<User> users = new List<User>(); // Inisialisasi daftar user jika diperlukan
+/*                var temanList = User.BacaDaftarTeman(users, namaOrganisasi);
+
+                if (temanList.Count == 0)
+                {
+                    MessageBox.Show("Tidak ada teman ditemukan di organisasi tersebut.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Tambahkan hasil pencarian ke DataGridView
+                    foreach (var teman in temanList)
+                    {
+                        teman.bacaKisahHidupOrganisasi(namaOrganisasi, out string TahunAwal, out string TahunAkkhir);
+                        dataGridViewPencarian.Rows.Add(teman.Foto, teman.Username, TahunAwal, TahunAkkhir);
+                    }
+                }*/
+            }
+            catch (Exception ex)
+            {
+                // Tampilkan pesan error lengkap
+                MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridViewPencarian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewPencarian.Columns["Invite"].Index && e.RowIndex >= 0)
+            {
+                int friendId = int.Parse(dataGridViewPencarian.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                KirimUndangan(friendId);
+            }
+        }
+        private void KirimUndangan(int friendId)
+        {
+            MessageBox.Show($"Permintaan pertemanan dikirim ke user ID {friendId}.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
