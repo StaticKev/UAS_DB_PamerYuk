@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace UAS_DB_PamerYuk.Persistence
 {
@@ -19,17 +18,22 @@ namespace UAS_DB_PamerYuk.Persistence
             string extension = image.RawFormat.Equals(ImageFormat.Png) ? ".png" :
                                image.RawFormat.Equals(ImageFormat.Jpeg) ? ".jpeg" : ".jpg";
 
-            if (Directory.Exists(fileStoragePath))
+            if (!Directory.Exists(fileStoragePath)) throw new DirectoryNotFoundException(fileStoragePath);
+            else
             {
                 fullPath = GenerateFileName(fileStoragePath, extension);
                 image.Save(fullPath);
             }
-            else throw new DirectoryNotFoundException(fileStoragePath);
 
             return fullPath;
         }
+        public Image RetrieveImage(string path)
+        {
+            if (!File.Exists(path)) throw new FileNotFoundException(path);
+            else return Image.FromFile(path);
+        }
 
-        public void StoreVideo() { }
+        public void StoreVideo() { throw new NotImplementedException(); }
 
         private string GenerateFileName(string folderPath, string extension) 
         {

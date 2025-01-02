@@ -55,6 +55,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F3_Chat\View\SingleContactUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F3_Chat\View\SingleContactUC.Designer.cs">
+      <DependentUpon>SingleContactUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\ClientRepo.cs" />
     <Compile Include="Persistence\FileRepo.cs" />
     <Compile Include="Persistence\KisahHidupDAO.cs" />
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F3_Chat\View\ChatRoomUC.resx">
       <DependentUpon>ChatRoomUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F3_Chat\View\SingleContactUC.resx">
+      <DependentUpon>SingleContactUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\ContentUC_P.resx">
       <DependentUpon>ContentUC_P.cs</DependentUpon>
