@@ -51,7 +51,6 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             if (resultSet.Read())
             {
                 username = resultSet.GetString("username");
-                password = "";
                 DateTime tglLahir = resultSet.GetDateTime("tgllahir");
                 string noKTP = resultSet.GetString("noktp");
                 string foto = resultSet.GetString("foto");
@@ -60,7 +59,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 string nama = resultSet.GetString("nama");
                 Kota kota = new Kota(id, nama);
 
-                result = new User(username, password, tglLahir, noKTP, foto, kota);
+                result = new User(username, tglLahir, noKTP, foto, kota);
             }
 
             connection.Close();
@@ -95,7 +94,6 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             while (resultSet.Read())
             {
                 string username = resultSet.GetString("username");
-                string password = "";
                 DateTime tglLahir = resultSet.GetDateTime("tgllahir");
                 string noKTP = resultSet.GetString("noktp");
                 string foto = resultSet.GetString("foto");
@@ -104,7 +102,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 string nama = resultSet.GetString("nama");
                 Kota kota = new Kota(idKota, nama);
 
-                result.Add(new User(username, password, tglLahir, noKTP, foto, kota));
+                result.Add(new User(username, tglLahir, noKTP, foto, kota));
             }
 
             connection.Close();
@@ -130,7 +128,6 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             while (resultSet.Read())
             {
                 string username = resultSet.GetString("username");
-                string password = "";
                 DateTime tglLahir = resultSet.GetDateTime("tgllahir");
                 string noKTP = resultSet.GetString("noktp");
                 string foto = resultSet.GetString("foto");
@@ -139,7 +136,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 string nama = resultSet.GetString("nama");
                 Kota kota = new Kota(idKota, nama);
 
-                result.Add(new User(username, password, tglLahir, noKTP, foto, kota));
+                result.Add(new User(username, tglLahir, noKTP, foto, kota));
             }
 
             connection.Close();

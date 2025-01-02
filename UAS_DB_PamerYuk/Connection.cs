@@ -19,8 +19,7 @@ namespace UAS_DB_PamerYuk
             string pS = settingsSection.Settings.Get("DbServer").Value.ValueXml.InnerText;
             string pD = settingsSection.Settings.Get("DbName").Value.ValueXml.InnerText;
             string pU = settingsSection.Settings.Get("DbUsername").Value.ValueXml.InnerText;
-            string pP = settingsSection.Settings.Get("DbPassword").Value.ValueXml.InnerText; // Kalau mau run, pakai yang bawah. 
-            // string pP = "";
+            string pP = settingsSection.Settings.Get("DbPassword").Value.ValueXml.InnerText; 
 
             string conString = "Server=" + pS + ";Database=" + pD + ";Uid=" + pU + ";Pwd=" + pP + ";";
             DbConnection = new MySqlConnection(conString);

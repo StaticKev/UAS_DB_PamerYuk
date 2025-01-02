@@ -14,6 +14,21 @@ namespace Class_PamerYuk
         #endregion
 
         #region Constructor
+        public User(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
+        public User(string username, DateTime tglLahir, string noKTP, string foto, Kota kota)
+        {
+            Username = username;
+            TglLahir = tglLahir;
+            NoKTP = noKTP;
+            Foto = foto;
+            Kota = kota;
+        }
+
         public User(string username, string password, DateTime tglLahir, string noKTP, string foto, Kota kota)
         {
             Username = username;
@@ -65,7 +80,7 @@ namespace Class_PamerYuk
 
                 if (value == null) throw new ArgumentNullException("Class: User | NoKTP can't be null!");
                 else if (value.Length != 16) throw new ArgumentException("Panjang nomor KTP adalah 16 karakter!");
-                else if (!int.TryParse(value, out int t)) throw new ArgumentException("Nomor KTP hanya boleh mengandung angka!");
+                else if (int.TryParse(value, out int t)) throw new ArgumentException("Nomor KTP hanya boleh mengandung angka!");
                 else noKTP = value;
             } 
         }

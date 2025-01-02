@@ -69,7 +69,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 string namaKota = resultSet.GetString("nama");
 
                 Kota k = new Kota(idKota, namaKota);
-                User u = new User(username, "-", tglLahir, noKTP, fotoProfil, k);
+                User u = new User(username, tglLahir, noKTP, fotoProfil, k);
                 result.Add(new Konten(idKonten, u, caption, foto, video, tglUpload));
             }
 
@@ -105,7 +105,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                 string nama = resultSet.GetString("nama");
 
                 Kota kt = new Kota(idKota, nama);
-                User u = new User(username, "-", tglLahir, noKTP, foto, kt);
+                User u = new User(username, tglLahir, noKTP, foto, kt);
                 result.Add(new Komen(idKomentar, komentar, tgl, u));
             }
 

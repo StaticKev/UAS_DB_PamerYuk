@@ -155,7 +155,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::UAS_DB_PamerYuk.Properties.Resources.profileFrame;
+            this.pictureBox2.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.profileFrame;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(2, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(42, 42);

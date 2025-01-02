@@ -55,6 +55,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\ClientRepo.cs" />
     <Compile Include="Persistence\FileRepo.cs" />
     <Compile Include="Persistence\KisahHidupDAO.cs" />
     <Compile Include="Persistence\KontenDAO.cs" />
@@ -133,7 +134,6 @@
     <Compile Include="F4_Content\View\HomeMenuUC.Designer.cs">
       <DependentUpon>HomeMenuUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\ControlAdapter.cs" />
     <Compile Include="F4_Content\View\SingleContentUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,7 +226,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FileStorage\" />
+    <Folder Include="Persistence\FileStorage\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HomeButton.png" />
@@ -280,9 +280,6 @@
     <None Include="Resources\sampleContent1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\profileFrame.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\sampleUser5.png" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +326,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddVideoButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profileFrame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultProfilePict.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

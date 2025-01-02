@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.navigationBar = new System.Windows.Forms.Panel();
             this.profileButton = new System.Windows.Forms.PictureBox();
             this.chatButton = new System.Windows.Forms.PictureBox();
             this.searchButton = new System.Windows.Forms.PictureBox();
             this.homeButton = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
+            this.navigationBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profileButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chatButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchButton)).BeginInit();
@@ -50,19 +50,19 @@
             this.mainPanel.Size = new System.Drawing.Size(400, 645);
             this.mainPanel.TabIndex = 0;
             // 
-            // panel1
+            // navigationBar
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.NavBar;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Controls.Add(this.profileButton);
-            this.panel1.Controls.Add(this.chatButton);
-            this.panel1.Controls.Add(this.searchButton);
-            this.panel1.Controls.Add(this.homeButton);
-            this.panel1.Location = new System.Drawing.Point(0, 645);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 55);
-            this.panel1.TabIndex = 0;
+            this.navigationBar.BackColor = System.Drawing.Color.Transparent;
+            this.navigationBar.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.NavBar;
+            this.navigationBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.navigationBar.Controls.Add(this.profileButton);
+            this.navigationBar.Controls.Add(this.chatButton);
+            this.navigationBar.Controls.Add(this.searchButton);
+            this.navigationBar.Controls.Add(this.homeButton);
+            this.navigationBar.Location = new System.Drawing.Point(0, 645);
+            this.navigationBar.Name = "navigationBar";
+            this.navigationBar.Size = new System.Drawing.Size(400, 55);
+            this.navigationBar.TabIndex = 0;
             // 
             // profileButton
             // 
@@ -123,7 +123,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 700);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.navigationBar);
             this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -131,7 +131,7 @@
             this.Name = "MainForm";
             this.Text = "PamerYuk";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
+            this.navigationBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.profileButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chatButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchButton)).EndInit();
@@ -141,12 +141,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel navigationBar;
         private System.Windows.Forms.PictureBox searchButton;
         private System.Windows.Forms.PictureBox homeButton;
         private System.Windows.Forms.PictureBox chatButton;
         private System.Windows.Forms.PictureBox profileButton;
-        private System.Windows.Forms.Panel mainPanel;
+        public System.Windows.Forms.Panel mainPanel;
     }
 }
 
