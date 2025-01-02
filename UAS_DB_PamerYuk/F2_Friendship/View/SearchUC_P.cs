@@ -40,9 +40,9 @@ namespace UAS_DB_PamerYuk.F2_Friendship.View
             try
             {
                 // ========================================================================================
-                // List<Organisasi> organisasis = service.GetOrganizations();
-                // List<User> userByUsername = service.FindUserByUsername(namaOrganisasi);
-                // List<User> userByNamaOrganisasi = service.FindUserByOrganisasi(namaOrganisasi);
+                List<Organisasi> listOrganisasi = service.GetOrganizations();
+                // List<User> userByUsername = service.FindUserByUsername(new User(<Ini diganti teks dari textbox>, "-"), mainForm.currentUser);
+                // List<User> userByNamaOrganisasi = service.FindUserByOrganisasi(<DIGANTI OBJEK ORGANISASI>, mainForm.currentUser);
                 // ========================================================================================
 
                 // Jalankan logika CariTeman

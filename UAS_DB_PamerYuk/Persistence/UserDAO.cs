@@ -12,7 +12,6 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
         public enum Table
         {
-            ORGANISASI, // Mencari berdasarkan id organisasi
             LIKE, // Mencari berdasarkan id konten
             TAG // Mencari berdasarkan id konten
         }
@@ -67,57 +66,16 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             return result;
         }
 
-        public List<User> Read_FindByUsername(string username)
-        {
-            List<User> result = new List<User>();
-
-            string sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
-                            FROM `user` u
-                            INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
-                            WHERE `username` = '{username}'";
-            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
-            MySqlDataReader resultSet = cmd.ExecuteReader();
-
-            while (resultSet.Read())
-            {
-                username = resultSet.GetString("username");
-                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
-                string noKTP = resultSet.GetString("noktp");
-                string foto = resultSet.GetString("foto");
-
-                int id = resultSet.GetInt32("id");
-                string nama = resultSet.GetString("nama");
-                Kota kota = new Kota(id, nama);
-
-                result.Add(new User(username, tglLahir, noKTP, foto, kota));
-            }
-
-            connection.Close();
-            return result;
-        }
-
         public List<User> Read_FindById(Table table, int id)
         {
             List <User> result = new List<User>();
 
             string sql = "";
 
-            if (table.Equals(Table.ORGANISASI))
-            {
-                sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
-                         FROM `user` u
-                         INNER JOIN `kisahhidup` h ON (u.`username` = h.`username`)
-                         INNER JOIN `organisasi` o ON (h.`organisasi_id` = o.`id`)
-                         INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
-                         WHERE h.`organisasi_id` = {id}";
-            }
-            else
-            {
-                sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
-                         FROM `user` u
-                         INNER JOIN `{table.ToString()}` j ON (u.`username` = j.`username`)
-                         WHERE j.`konten_id` = {id}";
-            }
+            sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                     FROM `user` u
+                     INNER JOIN `{table.ToString()}` j ON (u.`username` = j.`username`)
+                     WHERE j.`konten_id` = {id}";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();
 
@@ -170,6 +128,74 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             }
 
             connection.Close();
+            return result;
+        }
+
+        public List<User> Read_FindByUsername(User user, User currentUser)
+        {
+            List<User> result = new List<User>();
+
+            string sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                            FROM `user` u 
+                            INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
+                            INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
+                            WHERE u.`username` = {user.Username}
+                            AND (t.`username1` = '{currentUser.Username}' OR t.`username2` = '{currentUser.Username}')
+                            AND u.`username` != '{currentUser.Username}'";
+            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
+            MySqlDataReader resultSet = cmd.ExecuteReader();
+
+            while (resultSet.Read())
+            {
+                string username = resultSet.GetString("username");
+                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
+                string noKTP = resultSet.GetString("noktp");
+                string foto = resultSet.GetString("foto");
+
+                int idKota = resultSet.GetInt32("id");
+                string nama = resultSet.GetString("nama");
+                Kota kota = new Kota(idKota, nama);
+
+                result.Add(new User(username, tglLahir, noKTP, foto, kota));
+            }
+
+            return null;
+        }
+
+        public List<User> Read_FindByOrganization(Organisasi organisasi, User currentUser)
+        {
+            List<User> result = new List<User>();
+
+            string sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                            FROM `user` u
+                            INNER JOIN `kisahhidup` h ON (u.`username` = h.`username`)
+                            INNER JOIN `organisasi` o ON (h.`organisasi_id` = o.`id`)
+                            INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
+                            WHERE h.`organisasi_id` = {organisasi.Id}
+                            AND u.`username` NOT IN (
+                            SELECT u.`username`
+                                FROM `user` u
+                                INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
+                                WHERE (t.`username1` = '{currentUser.Username}' OR t.`username2` = '{currentUser.Username}')
+                                AND u.`username` != '{currentUser.Username}'
+                            )";
+            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
+            MySqlDataReader resultSet = cmd.ExecuteReader();
+
+            while (resultSet.Read())
+            {
+                string username = resultSet.GetString("username");
+                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
+                string noKTP = resultSet.GetString("noktp");
+                string foto = resultSet.GetString("foto");
+
+                int idKota = resultSet.GetInt32("id");
+                string nama = resultSet.GetString("nama");
+                Kota kota = new Kota(idKota, nama);
+
+                result.Add(new User(username, tglLahir, noKTP, foto, kota));
+            }
+
             return result;
         }
 

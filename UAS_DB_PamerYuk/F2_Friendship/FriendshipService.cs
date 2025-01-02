@@ -16,17 +16,17 @@ namespace UAS_DB_PamerYuk.F4_Content
             organisasiDAO = new OrganisasiDAO(connection);
         }
 
-        public List<User> FindUserByUsername(string username)
+        public List<User> FindUserByUsername(User user, User currentUser)
         {
-            List<User> result = userDAO.Read_FindByUsername(username);
+            List<User> result = userDAO.Read_FindByUsername(user, currentUser);
 
             if (result.Count == 0) throw new Exception("User not found!");
             else return result;
         }
 
-        public List<User> FindUserByOrganisasi(Organisasi organisasi)
+        public List<User> FindUserByOrganisasi(Organisasi organisasi, User currentUser)
         {
-            List<User> result = userDAO.Read_FindById(UserDAO.Table.ORGANISASI, organisasi.Id);
+            List<User> result = userDAO.Read_FindByOrganization(organisasi, currentUser);
 
             if (result.Count == 0) throw new Exception("User not found!");
             else return result;
