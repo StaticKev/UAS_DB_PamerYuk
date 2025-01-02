@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace Class_PamerYuk
 {
@@ -15,13 +16,14 @@ namespace Class_PamerYuk
         #region Constructor
         public KisahHidup(Organisasi organisasi, User user, string thawal, string thakhir, string deskripsi)
         {
-            if (thawal.CompareTo(thakhir) >= 0) throw new ArgumentException("Tahun akhir harus setelah tahun awal!");
-
             User = user;
             Organisasi = organisasi;
             Thawal = thawal;
             Thakhir = thakhir;
             Deskripsi = deskripsi;
+
+            if (int.Parse(Thawal) > int.Parse(Thakhir)) throw new ArgumentException("Start year musn't be greater than the end!");
+            else if (int.Parse(Thakhir) < int.Parse(Thawal)) throw new ArgumentException("End year musn't be greater than the start!");
         }
         #endregion
 
@@ -50,6 +52,7 @@ namespace Class_PamerYuk
             private set
             {
                 if (value == null || value == "") throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be null or empty!");
+                else if (!int.TryParse(value, out int temp)) throw new ArgumentException("Invalid value for start year!");
                 thawal = value;
             }
         }
@@ -59,6 +62,7 @@ namespace Class_PamerYuk
             private set
             {
                 if (value == null) throw new ArgumentNullException("Class: KisahHidup | Thakhir can't be null!");
+                else if (!int.TryParse(value, out int temp)) throw new ArgumentException("Invalid value for end year!");
                 thakhir = value;
             }
         }

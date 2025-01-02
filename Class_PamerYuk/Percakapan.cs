@@ -61,7 +61,6 @@ namespace Class_PamerYuk
             private set
             {
                 if (value == null) throw new ArgumentNullException("Class: Percakapan | Pesan can't be null");
-                else if (value == "") throw new ArgumentException("Isi pesan tidak boleh kosong!");
                 else pesan = value;
             } 
         }

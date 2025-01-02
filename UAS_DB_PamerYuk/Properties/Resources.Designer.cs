@@ -133,6 +133,16 @@ namespace UAS_DB_PamerYuk.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DefaultProfilePict {
+            get {
+                object obj = ResourceManager.GetObject("DefaultProfilePict", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dot {
             get {
                 object obj = ResourceManager.GetObject("Dot", resourceCulture);

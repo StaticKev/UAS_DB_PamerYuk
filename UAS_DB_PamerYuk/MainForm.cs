@@ -1,5 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Class_PamerYuk;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using UAS_DB_PamerYuk.F1_UserManager;
 using UAS_DB_PamerYuk.F2_Friendship;
@@ -8,11 +9,14 @@ using UAS_DB_PamerYuk.F3_Chat;
 using UAS_DB_PamerYuk.F3_Chat.View;
 using UAS_DB_PamerYuk.F4_Content;
 using UAS_DB_PamerYuk.F4_Content.View;
+using UAS_DB_PamerYuk.Persistence;
 
 namespace UAS_DB_PamerYuk
 {
     public partial class MainForm : Form
     {
+        public User currentUser = null; 
+        public Dictionary<string, User> userLoggedIn = new Dictionary<string, User>(); 
 
         private readonly Connection connection;
         private Control currentMenu;
@@ -26,11 +30,43 @@ namespace UAS_DB_PamerYuk
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ContentService service = new ContentService(connection);
-            ContentUC_P uc = new ContentUC_P(service, this);
 
-            currentMenu = uc;
-            mainPanel.Controls.Add(uc);
+            // ============================== LAST LOGIN ============================================================
+/*            currentUser = ClientRepo.GetCurrentUser();
+
+            if (currentUser == null)
+            {
+                mainPanel.Hide();
+                navigationBar.Hide();
+
+                UserManagerService umService = new UserManagerService(connection);
+                LoginUC loginUc = new LoginUC(umService, this);
+                Controls.Add(loginUc);
+            }
+
+            userLoggedIn = ClientRepo.GetAllUserLoggedIn();
+
+            ContentService cService = new ContentService(connection);
+            ContentUC_P contentUc = new ContentUC_P(cService, this);
+
+            currentMenu = contentUc;
+            mainPanel.Controls.Add(contentUc);*/
+            // ============================== LAST LOGIN ============================================================
+            // ============================== REPLACE LATER =========================================================
+            mainPanel.Hide();
+            navigationBar.Hide();
+
+            UserManagerService umService = new UserManagerService(connection);
+            LoginUC loginUc = new LoginUC(umService, this);
+            Controls.Add(loginUc);
+
+            ContentService cService = new ContentService(connection);
+            ContentUC_P contentUc = new ContentUC_P(cService, this);
+
+            currentMenu = contentUc;
+            mainPanel.Controls.Add(contentUc);
+            // ============================== REPLACE LATER =========================================================
+
         }
 
         private void HomeButton_OnClick(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace Class_PamerYuk
             private set
             {
                 if (value == null) throw new ArgumentNullException("Class: Komen | Komentar can't be null!");
-                else if (value == "") throw new ArgumentNullException("Komentar tidak boleh kosong!");
+                else if (value == "") throw new ArgumentNullException("Comment can't be empty!");
                 else komentar = value;
             }
         }
