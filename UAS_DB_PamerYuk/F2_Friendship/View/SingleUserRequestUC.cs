@@ -1,12 +1,5 @@
 ﻿using Class_PamerYuk;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UAS_DB_PamerYuk.F4_Content;
 using UAS_DB_PamerYuk.Persistence;

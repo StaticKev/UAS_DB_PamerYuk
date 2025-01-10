@@ -27,6 +27,7 @@ namespace UAS_DB_PamerYuk
             catch (MySqlException ex)
             {
                 MessageBox.Show("Connection Failed");
+                MessageBox.Show(ex.Message);
             }
         }
     }
