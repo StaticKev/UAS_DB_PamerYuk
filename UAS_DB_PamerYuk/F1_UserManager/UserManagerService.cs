@@ -37,5 +37,30 @@ namespace UAS_DB_PamerYuk.F3_Chat
         {
             return kotaDAO.Read_All();
         }
+
+        public List<Organisasi> GetAllOrganisasi()
+        {
+            return organisasiDAO.Read_All();
+        }
+
+        public List<User> GetFriend(User user)
+        {
+            return userDAO.Read_AllFriend(user, UserDAO.FriendshipStatus.FRIEND);
+        }
+
+        public List<KisahHidup> GetKisahHidup(User user)
+        {
+            return kisahHidupDAO.Read_ByUsername(user);
+        }
+
+        public void AddKisahHidup(KisahHidup kisahHidup)
+        {
+            kisahHidupDAO.Insert_KisahHidup(kisahHidup);
+        }
+
+        public void AddOrganisasi(Organisasi organisasi)
+        {
+            organisasiDAO.Insert_Organisasi(organisasi);
+        } 
     }
 }

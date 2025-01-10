@@ -54,7 +54,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(60, 24);
+            this.usernameLabel.Location = new System.Drawing.Point(60, 23);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(76, 16);
             this.usernameLabel.TabIndex = 4;
@@ -62,28 +62,28 @@
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(54, 9);
+            this.panel3.Location = new System.Drawing.Point(54, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(4, 46);
             this.panel3.TabIndex = 7;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(8, 9);
+            this.panel4.Location = new System.Drawing.Point(8, 8);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(4, 46);
             this.panel4.TabIndex = 8;
             // 
             // panel5
             // 
-            this.panel5.Location = new System.Drawing.Point(10, 8);
+            this.panel5.Location = new System.Drawing.Point(10, 7);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(46, 3);
             this.panel5.TabIndex = 9;
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(8, 53);
+            this.panel6.Location = new System.Drawing.Point(8, 52);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(46, 3);
             this.panel6.TabIndex = 10;
@@ -148,7 +148,7 @@
             this.pPictPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pPictPanel.BackgroundImage")));
             this.pPictPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pPictPanel.Controls.Add(this.pictureBox2);
-            this.pPictPanel.Location = new System.Drawing.Point(10, 9);
+            this.pPictPanel.Location = new System.Drawing.Point(10, 8);
             this.pPictPanel.Name = "pPictPanel";
             this.pPictPanel.Size = new System.Drawing.Size(46, 46);
             this.pPictPanel.TabIndex = 6;

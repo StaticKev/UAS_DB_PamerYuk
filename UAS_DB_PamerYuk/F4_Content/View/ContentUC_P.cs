@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using UAS_DB_PamerYuk.F2_Friendship;
 using UAS_DB_PamerYuk.Utility;
@@ -31,6 +29,12 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             buttonPanel.SetBounds(0, 0, hmu.Size.Width, hmu.Size.Height);
             buttonPanel.Controls.Add(hmu);
 
+            // ===========================================================================================================
+
+
+
+            // ===========================================================================================================
+
             flp.Controls.Add(buttonPanel);
 
             for (int i = 1; i <= 5; i++) 
@@ -55,7 +59,6 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
         private void MultipleContentUC_Load(object sender, EventArgs e)
         {
-
         }
 
         private void flp_Paint(object sender, PaintEventArgs e)

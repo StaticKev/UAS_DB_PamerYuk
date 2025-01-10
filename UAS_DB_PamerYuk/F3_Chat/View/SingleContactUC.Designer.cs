@@ -63,6 +63,7 @@
             this.Controls.Add(this.pPictPanel);
             this.Name = "SingleContactUC";
             this.Size = new System.Drawing.Size(364, 60);
+            this.Load += new System.EventHandler(this.SingleContactUC_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SingleContactUC_MouseClick);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -35,7 +35,7 @@
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.button_LogIn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label_SignIn = new System.Windows.Forms.Label();
+            this.label_SignUp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -101,24 +101,24 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Don\'t have an account?";
             // 
-            // label_SignIn
+            // label_SignUp
             // 
-            this.label_SignIn.AutoSize = true;
-            this.label_SignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.label_SignIn.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label_SignIn.Location = new System.Drawing.Point(236, 638);
-            this.label_SignIn.Name = "label_SignIn";
-            this.label_SignIn.Size = new System.Drawing.Size(39, 13);
-            this.label_SignIn.TabIndex = 7;
-            this.label_SignIn.Text = "Sign in";
-            this.label_SignIn.Click += new System.EventHandler(this.label_SignIn_Click);
+            this.label_SignUp.AutoSize = true;
+            this.label_SignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.label_SignUp.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label_SignUp.Location = new System.Drawing.Point(236, 638);
+            this.label_SignUp.Name = "label_SignUp";
+            this.label_SignUp.Size = new System.Drawing.Size(43, 13);
+            this.label_SignUp.TabIndex = 7;
+            this.label_SignUp.Text = "Sign up";
+            this.label_SignUp.Click += new System.EventHandler(this.label_SignUp_Click);
             // 
             // LoginUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Controls.Add(this.label_SignIn);
+            this.Controls.Add(this.label_SignUp);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button_LogIn);
             this.Controls.Add(this.textBox_Password);
@@ -143,6 +143,6 @@
         private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Button button_LogIn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label_SignIn;
+        private System.Windows.Forms.Label label_SignUp;
     }
 }

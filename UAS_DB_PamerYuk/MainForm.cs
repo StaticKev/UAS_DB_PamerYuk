@@ -116,13 +116,14 @@ namespace UAS_DB_PamerYuk
 
         private void ProfileButton_OnClick(object sender, EventArgs e)
         {
-            if (currentMenu is ProfileUC_P) return;
+            if (currentMenu is AccountUC_P) return;
 
             profileButton.Image = Properties.Resources.ProfileButton_clicked;
             ResetButton();
 
-            UserManagerService service = new UserManagerService(connection);
-            ProfileUC_P uc = new ProfileUC_P(service, this);
+            UserManagerService umService = new UserManagerService(connection);
+            ContentService ctService = new ContentService(connection);
+            AccountUC_P uc = new AccountUC_P(umService, ctService, this);
 
             mainPanel.Controls.Remove(currentMenu);
             currentMenu = uc;
@@ -166,7 +167,7 @@ namespace UAS_DB_PamerYuk
 
         private void ProfileButton_MouseLeave(object sender, EventArgs e)
         {
-            if (!(currentMenu is ProfileUC_P)) profileButton.Image = Properties.Resources.ProfileButton;
+            if (!(currentMenu is AccountUC_P)) profileButton.Image = Properties.Resources.ProfileButton;
         }
 
         private void ResetButton()
@@ -174,7 +175,7 @@ namespace UAS_DB_PamerYuk
             if (currentMenu is ContentUC_P) homeButton.Image = Properties.Resources.HomeButton;
             else if (currentMenu is SearchUC_P) searchButton.Image = Properties.Resources.SearchButton;
             else if (currentMenu is ChatListUC_P) chatButton.Image = Properties.Resources.ChatButton;
-            else if (currentMenu is ProfileUC_P) profileButton.Image = Properties.Resources.ProfileButton;
+            else if (currentMenu is AccountUC_P) profileButton.Image = Properties.Resources.ProfileButton;
         }
     }
 }

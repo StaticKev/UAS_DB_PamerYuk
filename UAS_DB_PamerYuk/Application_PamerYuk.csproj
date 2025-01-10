@@ -55,6 +55,42 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F1_UserManager\View\FriendListUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\FriendListUC.Designer.cs">
+      <DependentUpon>FriendListUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F1_UserManager\View\ListKisahHidup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\ListKisahHidup.Designer.cs">
+      <DependentUpon>ListKisahHidup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F1_UserManager\View\ProfileUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\ProfileUC.Designer.cs">
+      <DependentUpon>ProfileUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F1_UserManager\View\SingleKisahHidupUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\SingleKisahHidupUC.Designer.cs">
+      <DependentUpon>SingleKisahHidupUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F1_UserManager\View\SingleUserUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\SingleUserUC.Designer.cs">
+      <DependentUpon>SingleUserUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F1_UserManager\View\TambahOrganisasiUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F1_UserManager\View\TambahOrganisasiUC.Designer.cs">
+      <DependentUpon>TambahOrganisasiUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="F3_Chat\View\SingleContactUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,29 +111,23 @@
     <Compile Include="F1_UserManager\View\LoginUC.Designer.cs">
       <DependentUpon>LoginUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="F1_UserManager\View\ProfileUC_P.cs">
+    <Compile Include="F1_UserManager\View\AccountUC_P.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="F1_UserManager\View\ProfileUC_P.Designer.cs">
-      <DependentUpon>ProfileUC_P.cs</DependentUpon>
+    <Compile Include="F1_UserManager\View\AccountUC_P.Designer.cs">
+      <DependentUpon>AccountUC_P.cs</DependentUpon>
     </Compile>
-    <Compile Include="F1_UserManager\View\SignInUC.cs">
+    <Compile Include="F1_UserManager\View\SignUpUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="F1_UserManager\View\SignInUC.Designer.cs">
-      <DependentUpon>SignInUC.cs</DependentUpon>
+    <Compile Include="F1_UserManager\View\SignUpUC.Designer.cs">
+      <DependentUpon>SignUpUC.cs</DependentUpon>
     </Compile>
     <Compile Include="F1_UserManager\View\SwitchUserUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="F1_UserManager\View\SwitchUserUC.Designer.cs">
       <DependentUpon>SwitchUserUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="F2_Friendship\View\FriendListUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="F2_Friendship\View\FriendListUC.Designer.cs">
-      <DependentUpon>FriendListUC.cs</DependentUpon>
     </Compile>
     <Compile Include="F2_Friendship\View\FriendRequestUC.cs">
       <SubType>UserControl</SubType>
@@ -166,20 +196,35 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utility\ColorUtil.cs" />
+    <EmbeddedResource Include="F1_UserManager\View\FriendListUC.resx">
+      <DependentUpon>FriendListUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_UserManager\View\ListKisahHidup.resx">
+      <DependentUpon>ListKisahHidup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_UserManager\View\LoginUC.resx">
       <DependentUpon>LoginUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F1_UserManager\View\ProfileUC_P.resx">
-      <DependentUpon>ProfileUC_P.cs</DependentUpon>
+    <EmbeddedResource Include="F1_UserManager\View\AccountUC_P.resx">
+      <DependentUpon>AccountUC_P.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F1_UserManager\View\SignInUC.resx">
-      <DependentUpon>SignInUC.cs</DependentUpon>
+    <EmbeddedResource Include="F1_UserManager\View\ProfileUC.resx">
+      <DependentUpon>ProfileUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_UserManager\View\SignUpUC.resx">
+      <DependentUpon>SignUpUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_UserManager\View\SingleKisahHidupUC.resx">
+      <DependentUpon>SingleKisahHidupUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_UserManager\View\SingleUserUC.resx">
+      <DependentUpon>SingleUserUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_UserManager\View\SwitchUserUC.resx">
       <DependentUpon>SwitchUserUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F2_Friendship\View\FriendListUC.resx">
-      <DependentUpon>FriendListUC.cs</DependentUpon>
+    <EmbeddedResource Include="F1_UserManager\View\TambahOrganisasiUC.resx">
+      <DependentUpon>TambahOrganisasiUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F2_Friendship\View\FriendRequestUC.resx">
       <DependentUpon>FriendRequestUC.cs</DependentUpon>
@@ -341,6 +386,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultProfilePict.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMSVidCtlLib">
+      <Guid>{B0EDF154-910A-11D2-B632-00C04F79498E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AXVLC">
+      <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MSVidCtlLib">
+      <Guid>{B0EDF154-910A-11D2-B632-00C04F79498E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

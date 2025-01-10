@@ -28,122 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewPencarian = new System.Windows.Forms.DataGridView();
-            this.foto_Profil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thn_Awal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thn_Akhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button_Aksi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonPencarian = new System.Windows.Forms.Button();
-            this.labelJudul = new System.Windows.Forms.Label();
-            this.textBoxPencarian = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPencarian)).BeginInit();
+            this.comboBox_Organisasi = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox_ThAwal = new System.Windows.Forms.TextBox();
+            this.textBox_ThAkhir = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioButton_TahunAwal = new System.Windows.Forms.RadioButton();
+            this.radioButton_TahunAkhir = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // dataGridViewPencarian
+            // comboBox_Organisasi
             // 
-            this.dataGridViewPencarian.AllowUserToAddRows = false;
-            this.dataGridViewPencarian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPencarian.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.foto_Profil,
-            this.username,
-            this.thn_Awal,
-            this.thn_Akhir,
-            this.button_Aksi});
-            this.dataGridViewPencarian.Location = new System.Drawing.Point(15, 255);
-            this.dataGridViewPencarian.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewPencarian.Name = "dataGridViewPencarian";
-            this.dataGridViewPencarian.RowHeadersVisible = false;
-            this.dataGridViewPencarian.RowHeadersWidth = 82;
-            this.dataGridViewPencarian.RowTemplate.Height = 33;
-            this.dataGridViewPencarian.Size = new System.Drawing.Size(370, 197);
-            this.dataGridViewPencarian.TabIndex = 7;
+            this.comboBox_Organisasi.FormattingEnabled = true;
+            this.comboBox_Organisasi.Location = new System.Drawing.Point(23, 69);
+            this.comboBox_Organisasi.Name = "comboBox_Organisasi";
+            this.comboBox_Organisasi.Size = new System.Drawing.Size(354, 21);
+            this.comboBox_Organisasi.TabIndex = 0;
             // 
-            // foto_Profil
+            // label1
             // 
-            this.foto_Profil.HeaderText = "Foto Profil";
-            this.foto_Profil.MinimumWidth = 10;
-            this.foto_Profil.Name = "foto_Profil";
-            this.foto_Profil.Width = 200;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Search";
             // 
-            // username
+            // panel1
             // 
-            this.username.HeaderText = "Username";
-            this.username.MinimumWidth = 10;
-            this.username.Name = "username";
-            this.username.Width = 200;
+            this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(23, 149);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(354, 1);
+            this.panel1.TabIndex = 5;
             // 
-            // thn_Awal
+            // textBox_ThAwal
             // 
-            this.thn_Awal.HeaderText = "Tahun Awal";
-            this.thn_Awal.MinimumWidth = 10;
-            this.thn_Awal.Name = "thn_Awal";
-            this.thn_Awal.Width = 200;
+            this.textBox_ThAwal.Location = new System.Drawing.Point(23, 116);
+            this.textBox_ThAwal.Name = "textBox_ThAwal";
+            this.textBox_ThAwal.Size = new System.Drawing.Size(170, 20);
+            this.textBox_ThAwal.TabIndex = 6;
             // 
-            // thn_Akhir
+            // textBox_ThAkhir
             // 
-            this.thn_Akhir.HeaderText = "Tahun Akhir";
-            this.thn_Akhir.MinimumWidth = 10;
-            this.thn_Akhir.Name = "thn_Akhir";
-            this.thn_Akhir.Width = 200;
+            this.textBox_ThAkhir.Location = new System.Drawing.Point(207, 116);
+            this.textBox_ThAkhir.Name = "textBox_ThAkhir";
+            this.textBox_ThAkhir.Size = new System.Drawing.Size(170, 20);
+            this.textBox_ThAkhir.TabIndex = 7;
             // 
-            // button_Aksi
+            // flowLayoutPanel1
             // 
-            this.button_Aksi.HeaderText = "Tombol_Aksi";
-            this.button_Aksi.MinimumWidth = 10;
-            this.button_Aksi.Name = "button_Aksi";
-            this.button_Aksi.Width = 200;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 163);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(354, 469);
+            this.flowLayoutPanel1.TabIndex = 11;
             // 
-            // buttonPencarian
+            // radioButton_TahunAwal
             // 
-            this.buttonPencarian.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.buttonPencarian.Location = new System.Drawing.Point(302, 133);
-            this.buttonPencarian.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonPencarian.Name = "buttonPencarian";
-            this.buttonPencarian.Size = new System.Drawing.Size(78, 30);
-            this.buttonPencarian.TabIndex = 6;
-            this.buttonPencarian.Text = "Find Friends";
-            this.buttonPencarian.UseVisualStyleBackColor = true;
-            this.buttonPencarian.Click += new System.EventHandler(this.buttonPencarian_Click);
+            this.radioButton_TahunAwal.AutoSize = true;
+            this.radioButton_TahunAwal.Location = new System.Drawing.Point(27, 97);
+            this.radioButton_TahunAwal.Name = "radioButton_TahunAwal";
+            this.radioButton_TahunAwal.Size = new System.Drawing.Size(82, 17);
+            this.radioButton_TahunAwal.TabIndex = 12;
+            this.radioButton_TahunAwal.TabStop = true;
+            this.radioButton_TahunAwal.Text = "Tahun Awal";
+            this.radioButton_TahunAwal.UseVisualStyleBackColor = true;
             // 
-            // labelJudul
+            // radioButton_TahunAkhir
             // 
-            this.labelJudul.AutoSize = true;
-            this.labelJudul.Font = new System.Drawing.Font("Old English Text MT", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJudul.Location = new System.Drawing.Point(50, 58);
-            this.labelJudul.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelJudul.Name = "labelJudul";
-            this.labelJudul.Size = new System.Drawing.Size(293, 38);
-            this.labelJudul.TabIndex = 5;
-            this.labelJudul.Text = "Find New Friends";
-            this.labelJudul.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxPencarian
-            // 
-            this.textBoxPencarian.BackColor = System.Drawing.Color.RosyBrown;
-            this.textBoxPencarian.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPencarian.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBoxPencarian.Location = new System.Drawing.Point(18, 133);
-            this.textBoxPencarian.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textBoxPencarian.Name = "textBoxPencarian";
-            this.textBoxPencarian.Size = new System.Drawing.Size(262, 33);
-            this.textBoxPencarian.TabIndex = 4;
-            this.textBoxPencarian.Text = "Enter School or Company Name";
-            this.textBoxPencarian.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.radioButton_TahunAkhir.AutoSize = true;
+            this.radioButton_TahunAkhir.Location = new System.Drawing.Point(211, 97);
+            this.radioButton_TahunAkhir.Name = "radioButton_TahunAkhir";
+            this.radioButton_TahunAkhir.Size = new System.Drawing.Size(83, 17);
+            this.radioButton_TahunAkhir.TabIndex = 13;
+            this.radioButton_TahunAkhir.TabStop = true;
+            this.radioButton_TahunAkhir.Text = "Tahun Akhir";
+            this.radioButton_TahunAkhir.UseVisualStyleBackColor = true;
             // 
             // SearchUC_P
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MistyRose;
-            this.Controls.Add(this.dataGridViewPencarian);
-            this.Controls.Add(this.buttonPencarian);
-            this.Controls.Add(this.labelJudul);
-            this.Controls.Add(this.textBoxPencarian);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Controls.Add(this.radioButton_TahunAkhir);
+            this.Controls.Add(this.radioButton_TahunAwal);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.textBox_ThAkhir);
+            this.Controls.Add(this.textBox_ThAwal);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox_Organisasi);
             this.Name = "SearchUC_P";
             this.Size = new System.Drawing.Size(400, 645);
             this.Load += new System.EventHandler(this.SearchUC_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPencarian)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,14 +132,13 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewPencarian;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foto_Profil;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thn_Awal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thn_Akhir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn button_Aksi;
-        private System.Windows.Forms.Button buttonPencarian;
-        private System.Windows.Forms.Label labelJudul;
-        private System.Windows.Forms.TextBox textBoxPencarian;
+        private System.Windows.Forms.ComboBox comboBox_Organisasi;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox_ThAwal;
+        private System.Windows.Forms.TextBox textBox_ThAkhir;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.RadioButton radioButton_TahunAwal;
+        private System.Windows.Forms.RadioButton radioButton_TahunAkhir;
     }
 }

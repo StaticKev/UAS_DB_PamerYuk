@@ -45,5 +45,10 @@ namespace UAS_DB_PamerYuk.F3_Chat.View
             chatList.lblHeaderChat.Visible = false;
             chatList.textBox_Search.Visible = false;
         }
+
+        private void SingleContactUC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

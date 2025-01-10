@@ -23,9 +23,9 @@ namespace UAS_DB_PamerYuk.F1_UserManager
             BackColor = ColorUtil.palette["soft-white"];
         }
 
-        private void label_SignIn_Click(object sender, EventArgs e)
+        private void label_SignUp_Click(object sender, EventArgs e)
         {
-            SignInUC uc = new SignInUC(service, mainForm);
+            SignUpUC uc = new SignUpUC(service, mainForm);
             mainForm.Controls.Add(uc);
             mainForm.Controls.Remove(this);
         }
