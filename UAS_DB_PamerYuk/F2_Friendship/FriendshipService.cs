@@ -19,14 +19,17 @@ namespace UAS_DB_PamerYuk.F4_Content
         public List<User> FindUserByOrganisasi(Organisasi organisasi, User currentUser)
         {
             List<User> result = userDAO.Read_FindByOrganization(organisasi, currentUser);
-
-            if (result.Count == 0) throw new Exception("User not found!");
-            else return result;
+            return result;
         } 
 
         public List<Organisasi> GetOrganizations()
         {
             return organisasiDAO.Read_All();
+        }
+
+        public void AddFriend(User currentUser, User userToAdd)
+        {
+            if (!userDAO.Insert_AddFriend(currentUser, userToAdd)) throw new Exception("Tidak bisa menambah user, ERROR DB!");
         }
     }
 }

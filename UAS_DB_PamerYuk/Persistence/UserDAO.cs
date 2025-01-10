@@ -139,11 +139,11 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                             INNER JOIN `kisahhidup` h ON (u.`username` = h.`username`)
                             INNER JOIN `organisasi` o ON (h.`organisasi_id` = o.`id`)
                             INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
-                            LEFT JOIN `teman` t ON (u.`username` = t.`username1` AND t.`username2` = {currentUser.Username})
-                                OR (u.`username` = t.`username2` AND t.`username1` = {currentUser.Username})
+                            LEFT JOIN `teman` t ON (u.`username` = t.`username1` AND t.`username2` = '{currentUser.Username}')
+                                OR (u.`username` = t.`username2` AND t.`username1` = '{currentUser.Username}')
                             WHERE h.`organisasi_id` = {organisasi.Id}
                             AND t.`username1` IS NULL
-                            AND u.`username` != {currentUser.Username}";
+                            AND u.`username` != '{currentUser.Username}'";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();
 
