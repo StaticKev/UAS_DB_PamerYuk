@@ -19,7 +19,7 @@ namespace UAS_DB_PamerYuk.F1_UserManager.View
         private readonly AccountUC_P accountUC;
         private readonly UserManagerService service;
 
-        private readonly List<KisahHidup> kisahHidupUser;
+        private List<KisahHidup> kisahHidupUser;
 
         public ListKisahHidup(MainForm mainForm, AccountUC_P accountUC, UserManagerService service)
         {
@@ -27,8 +27,6 @@ namespace UAS_DB_PamerYuk.F1_UserManager.View
             this.mainForm = mainForm;
             this.accountUC = accountUC;
             this.service = service;
-
-            kisahHidupUser = service.GetKisahHidup(mainForm.currentUser);
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -68,6 +66,7 @@ namespace UAS_DB_PamerYuk.F1_UserManager.View
 
         private void ListKisahHidup_Load(object sender, EventArgs e)
         {
+            kisahHidupUser = service.GetKisahHidup(mainForm.currentUser);
             flp.Controls.Clear();
 
             comboBox_Organisasi.DataSource = service.GetAllOrganisasi();

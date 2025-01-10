@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Class_PamerYuk;
 using MySql.Data.MySqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace UAS_DB_PamerYuk.Repository.DAO
 {
