@@ -15,21 +15,38 @@ namespace UAS_DB_PamerYuk.Repository.DAO
         {
             List<Percakapan> result = new List<Percakapan>();
 
-            string sql = $@"SELECT `id`, `konten_percakapan` AS `kp`, waktu_kirim AS `wk` 
-                            FROM `percakapan` 
+            string sql = $@"SELECT p.`konten_percakapan` AS `kp`, p.`waktu_kirim` AS `wk`, p.`pengirim`
+                            FROM `percakapan` p
+                            INNER JOIN `user` u1 ON (p.`pengirim` = u1.`username`)
+                            INNER JOIN `user` u2 ON (p.`penerima` = u2.`username`)
                             WHERE (`pengirim` = '{sender.Username}' AND `penerima` = '{receiver.Username}')
                             OR (`pengirim` = '{receiver.Username}' AND `penerima` = '{sender.Username}')
-                            ORDER BY `wk` DESC";
+                            ORDER BY `wk` ASC";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();
 
             while(resultSet.Read())
             {
-                int id = resultSet.GetInt32("id");
                 string pesan = resultSet.GetString("kp");
                 DateTime waktuKirim = resultSet.GetDateTime("wk");
 
-                result.Add(new Percakapan(id, pesan, waktuKirim));
+                User pengirim = null;
+                User penerima = null;
+
+                string namaPengirim = resultSet.GetString("pengirim");
+                if (namaPengirim.Equals(sender.Username))
+                {
+                    pengirim = sender;
+                    penerima = receiver;
+                } 
+                else
+                {
+                    pengirim = receiver;
+                    penerima = sender;
+                }
+
+
+                result.Add(new Percakapan(pesan, waktuKirim, pengirim, penerima));
             }
 
             connection.Close();
@@ -39,7 +56,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
         public bool Insert_Chat(Percakapan percakapan)
         {
             string sql = $@"INSERT INTO `percakapan` (`pengirim`, `penerima`, `konten_percakapan`, `waktu_kirim`)
-                            VALUES ('{percakapan.Pengirim}', '{percakapan.Penerima}', '{percakapan.Pesan}', 
+                            VALUES ('{percakapan.Pengirim.Username}', '{percakapan.Penerima.Username}', '{percakapan.Pesan}', 
                                     '{percakapan.WaktuKirim.ToString("yyyy-MM-dd HH:mm:ss")}')";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             int ar = cmd.ExecuteNonQuery();

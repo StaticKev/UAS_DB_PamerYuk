@@ -14,16 +14,12 @@ namespace Class_PamerYuk
         #endregion
 
         #region Constructor
-        public Percakapan(int id, string pesan, DateTime waktuKirim)
-        {
-            Id = id;
-            Pesan = pesan;
-            WaktuKirim = waktuKirim;
-        }
         public Percakapan(string pesan, DateTime waktuKirim, User pengirim, User penerima)
         {
             Pesan = pesan;
             WaktuKirim = waktuKirim;
+            Pengirim = pengirim;
+            Penerima = penerima;
         }
         #endregion
 
