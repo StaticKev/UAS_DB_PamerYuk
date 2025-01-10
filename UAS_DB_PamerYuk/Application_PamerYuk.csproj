@@ -91,6 +91,12 @@
     <Compile Include="F1_UserManager\View\TambahOrganisasiUC.Designer.cs">
       <DependentUpon>TambahOrganisasiUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="F2_Friendship\View\SingleUserRequestUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F2_Friendship\View\SingleUserRequestUC.Designer.cs">
+      <DependentUpon>SingleUserRequestUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="F3_Chat\View\SingleContactUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F2_Friendship\View\SearchUC_P.resx">
       <DependentUpon>SearchUC_P.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F2_Friendship\View\SingleUserRequestUC.resx">
+      <DependentUpon>SingleUserRequestUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F3_Chat\View\ChatListUC_P.resx">
       <DependentUpon>ChatListUC_P.cs</DependentUpon>

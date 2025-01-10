@@ -1,7 +1,5 @@
 ﻿using System;
 
-// NOTE: Tambahkan pengecekan untuk relative path dari file yang valid!
-
 namespace Class_PamerYuk
 {
     public class Konten

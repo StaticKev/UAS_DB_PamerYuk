@@ -22,20 +22,29 @@ namespace UAS_DB_PamerYuk.F2_Friendship.View
         private void SearchUC_Load(object sender, EventArgs e)
         {
             BackColor = ColorUtil.palette["soft-white"];
+            comboBox_Organisasi.DataSource = service.GetOrganizations();
+            comboBox_Organisasi.DisplayMember = "Nama";
+            comboBox_Organisasi.SelectedIndex = -1;
         }
 
-        private void buttonPencarian_Click(object sender, EventArgs e)
+        public void comboBox_Organisasi_SelectedIndexChanged(object sender, EventArgs e)
         {
+            flp.Controls.Clear();
 
-        }
+            List<User> users = null;
+            Organisasi org = (Organisasi)comboBox_Organisasi.SelectedItem;
+            if (org != null)
+            {
+                users = service.FindUserByOrganisasi(org, mainForm.currentUser);
+            }
 
-        private void dataGridViewPencarian_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void KirimUndangan(int friendId)
-        {
-            MessageBox.Show($"Permintaan pertemanan dikirim ke user ID {friendId}.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (users != null)
+            {
+                foreach (User u in users)
+                {
+                    flp.Controls.Add(new SingleUserRequestUC(u, mainForm, this, service));
+                }
+            }
         }
     }
 }

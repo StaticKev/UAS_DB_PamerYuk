@@ -31,11 +31,7 @@
             this.comboBox_Organisasi = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox_ThAwal = new System.Windows.Forms.TextBox();
-            this.textBox_ThAkhir = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton_TahunAwal = new System.Windows.Forms.RadioButton();
-            this.radioButton_TahunAkhir = new System.Windows.Forms.RadioButton();
+            this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // comboBox_Organisasi
@@ -45,6 +41,7 @@
             this.comboBox_Organisasi.Name = "comboBox_Organisasi";
             this.comboBox_Organisasi.Size = new System.Drawing.Size(354, 21);
             this.comboBox_Organisasi.TabIndex = 0;
+            this.comboBox_Organisasi.SelectedIndexChanged += new System.EventHandler(this.comboBox_Organisasi_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -60,65 +57,24 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(23, 149);
+            this.panel1.Location = new System.Drawing.Point(23, 103);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 1);
             this.panel1.TabIndex = 5;
             // 
-            // textBox_ThAwal
+            // flp
             // 
-            this.textBox_ThAwal.Location = new System.Drawing.Point(23, 116);
-            this.textBox_ThAwal.Name = "textBox_ThAwal";
-            this.textBox_ThAwal.Size = new System.Drawing.Size(170, 20);
-            this.textBox_ThAwal.TabIndex = 6;
-            // 
-            // textBox_ThAkhir
-            // 
-            this.textBox_ThAkhir.Location = new System.Drawing.Point(207, 116);
-            this.textBox_ThAkhir.Name = "textBox_ThAkhir";
-            this.textBox_ThAkhir.Size = new System.Drawing.Size(170, 20);
-            this.textBox_ThAkhir.TabIndex = 7;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 163);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(354, 469);
-            this.flowLayoutPanel1.TabIndex = 11;
-            // 
-            // radioButton_TahunAwal
-            // 
-            this.radioButton_TahunAwal.AutoSize = true;
-            this.radioButton_TahunAwal.Location = new System.Drawing.Point(27, 97);
-            this.radioButton_TahunAwal.Name = "radioButton_TahunAwal";
-            this.radioButton_TahunAwal.Size = new System.Drawing.Size(82, 17);
-            this.radioButton_TahunAwal.TabIndex = 12;
-            this.radioButton_TahunAwal.TabStop = true;
-            this.radioButton_TahunAwal.Text = "Tahun Awal";
-            this.radioButton_TahunAwal.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_TahunAkhir
-            // 
-            this.radioButton_TahunAkhir.AutoSize = true;
-            this.radioButton_TahunAkhir.Location = new System.Drawing.Point(211, 97);
-            this.radioButton_TahunAkhir.Name = "radioButton_TahunAkhir";
-            this.radioButton_TahunAkhir.Size = new System.Drawing.Size(83, 17);
-            this.radioButton_TahunAkhir.TabIndex = 13;
-            this.radioButton_TahunAkhir.TabStop = true;
-            this.radioButton_TahunAkhir.Text = "Tahun Akhir";
-            this.radioButton_TahunAkhir.UseVisualStyleBackColor = true;
+            this.flp.Location = new System.Drawing.Point(23, 115);
+            this.flp.Name = "flp";
+            this.flp.Size = new System.Drawing.Size(354, 530);
+            this.flp.TabIndex = 11;
             // 
             // SearchUC_P
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Controls.Add(this.radioButton_TahunAkhir);
-            this.Controls.Add(this.radioButton_TahunAwal);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.textBox_ThAkhir);
-            this.Controls.Add(this.textBox_ThAwal);
+            this.Controls.Add(this.flp);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_Organisasi);
@@ -135,10 +91,6 @@
         private System.Windows.Forms.ComboBox comboBox_Organisasi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox_ThAwal;
-        private System.Windows.Forms.TextBox textBox_ThAkhir;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.RadioButton radioButton_TahunAwal;
-        private System.Windows.Forms.RadioButton radioButton_TahunAkhir;
+        private System.Windows.Forms.FlowLayoutPanel flp;
     }
 }
