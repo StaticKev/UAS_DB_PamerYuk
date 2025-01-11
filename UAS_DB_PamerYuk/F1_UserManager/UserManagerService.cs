@@ -62,5 +62,10 @@ namespace UAS_DB_PamerYuk.F3_Chat
         {
             organisasiDAO.Insert_Organisasi(organisasi);
         } 
+
+        public void CheckUsername(string username)
+        {
+            if (!userDAO.Read_CheckUsername(username)) throw new Exception("Username telah digunakan!");
+        }
     }
 }

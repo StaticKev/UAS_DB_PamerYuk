@@ -55,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flp;
+        public System.Windows.Forms.FlowLayoutPanel flp;
     }
 }
