@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Media;
 using UAS_DB_PamerYuk.F2_Friendship;
+using UAS_DB_PamerYuk.Persistence;
 using UAS_DB_PamerYuk.Utility;
 
 namespace UAS_DB_PamerYuk.F4_Content.View
@@ -13,6 +14,8 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         private readonly ContentService service;
         private readonly Panel panel;
         private readonly Konten konten;
+        private readonly FileRepo fileRepo;
+
 
         public SingleContentUC(ContentService service, Panel panel, Konten konten)
         {
@@ -20,6 +23,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             this.service = service;
             this.panel = panel;
             this.konten = konten;
+            fileRepo = new FileRepo();
         }
 
         // TEST PURPOSE ONLY!
@@ -33,6 +37,14 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         private void SingleContentUC_Load(object sender, EventArgs e)
         {
             BackColor = ColorUtil.palette["soft-white"];
+
+            if (konten != null)
+            {
+                label_caption.Text = konten.Caption;
+                usernameLabel.Text = konten.User.Username;
+                // pPictPanel.BackgroundImage = fileRepo.RetrieveImage(konten.User.Foto);
+                // contentPictBox.BackgroundImage = fileRepo.RetrieveImage(konten.Foto);
+            }
 
             int descHeight = TextRenderer.MeasureText(label_caption.Text, label_caption.Font).Height * ((label_caption.Text.Length / 70 + 1));
             label_caption.Size = new Size(350, descHeight);

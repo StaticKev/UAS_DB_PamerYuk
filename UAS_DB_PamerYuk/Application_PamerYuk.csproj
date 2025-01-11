@@ -109,6 +109,12 @@
     <Compile Include="F4_Content\View\NotificationUC.Designer.cs">
       <DependentUpon>NotificationUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="F4_Content\View\SingleTagUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F4_Content\View\SingleTagUC.Designer.cs">
+      <DependentUpon>SingleTagUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="F4_Content\View\SingleUserRequestUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\SingleContentUC.resx">
       <DependentUpon>SingleContentUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F4_Content\View\SingleTagUC.resx">
+      <DependentUpon>SingleTagUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\SingleUserRequestUC.resx">
       <DependentUpon>SingleUserRequestUC.cs</DependentUpon>
@@ -470,6 +479,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemoveVideoButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VideoAddedButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhotoAddedButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemovePhotoButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,7 +33,22 @@ namespace UAS_DB_PamerYuk.Persistence
             else return Image.FromFile(path);
         }
 
-        public void StoreVideo() { throw new NotImplementedException(); }
+        public string StoreVideo(string path) 
+        {
+            string fullPath = "";
+
+            if (path != null)
+            {
+                if (!Directory.Exists(fileStoragePath)) throw new DirectoryNotFoundException(fileStoragePath);
+                else
+                {
+                    fullPath = GenerateFileName(fileStoragePath, ".mp4");
+                    File.Copy(path, fullPath);
+                }
+            }
+
+            return fullPath;
+        }
 
         private string GenerateFileName(string folderPath, string extension) 
         {

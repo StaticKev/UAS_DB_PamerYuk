@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Media.Media3D;
 using Class_PamerYuk;
 using MySql.Data.MySqlClient;
 
@@ -112,7 +113,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             return result;
         }
 
-        public bool Insert_Content(Konten konten)
+        public int Insert_Content(Konten konten)
         {
             string sql = $@"INSERT INTO `konten` (`caption`, `foto`, `video`, `tglupload`, `username`) 
                             VALUES ('{konten.Caption}', '{konten.Foto}', '{konten.Video}', 
@@ -121,8 +122,14 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             int ar = cmd.ExecuteNonQuery();
 
-            connection.Close();
-            return ar > 0 ? true : false;
+            string sql2 = $"SELECT MAX(id) AS `id` FROM konten";
+            MySqlCommand cmd2 = new MySqlCommand(sql2, connection.GetConnection());
+            MySqlDataReader resultSet = cmd2.ExecuteReader();
+
+            int lastIndex = 0;
+            if (resultSet.Read()) lastIndex = resultSet.GetInt32("id"); 
+
+            return lastIndex;
         }
 
         public bool Insert_LikeOrTag(Table table, Konten konten, User user)

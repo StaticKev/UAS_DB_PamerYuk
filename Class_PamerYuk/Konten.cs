@@ -37,7 +37,7 @@ namespace Class_PamerYuk
         public int Id 
         { 
             get => id; 
-            private set
+            set
             {
                 if (value < 1) throw new ArgumentException("Class: Konten | Id must be greater than 0!");
                 else id = value;

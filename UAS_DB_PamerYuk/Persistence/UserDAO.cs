@@ -28,9 +28,10 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             string sql = $"SELECT COUNT(*) AS `count` FROM `user` WHERE `username` = '{username}'";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();
-            connection.Close();
 
             int count = resultSet.Read() ? resultSet.GetInt32("count") : 0;
+
+            connection.Close();
 
             return count == 0 ? true : false;
         } 

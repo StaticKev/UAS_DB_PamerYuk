@@ -32,6 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.notificationButton = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tagLabel = new System.Windows.Forms.Label();
+            this.tagButton = new System.Windows.Forms.PictureBox();
             this.addVideoButton = new System.Windows.Forms.PictureBox();
             this.addPhotoButton = new System.Windows.Forms.PictureBox();
             this.sendLabel = new System.Windows.Forms.Label();
@@ -39,6 +41,7 @@
             this.captionTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.notificationButton)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addVideoButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addPhotoButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sendButton)).BeginInit();
@@ -78,6 +81,8 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.UploadPane;
+            this.panel1.Controls.Add(this.tagLabel);
+            this.panel1.Controls.Add(this.tagButton);
             this.panel1.Controls.Add(this.addVideoButton);
             this.panel1.Controls.Add(this.addPhotoButton);
             this.panel1.Controls.Add(this.sendLabel);
@@ -87,6 +92,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(352, 130);
             this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // tagLabel
+            // 
+            this.tagLabel.AutoSize = true;
+            this.tagLabel.Location = new System.Drawing.Point(196, 98);
+            this.tagLabel.Name = "tagLabel";
+            this.tagLabel.Size = new System.Drawing.Size(26, 13);
+            this.tagLabel.TabIndex = 6;
+            this.tagLabel.Text = "Tag";
+            // 
+            // tagButton
+            // 
+            this.tagButton.BackColor = System.Drawing.Color.Transparent;
+            this.tagButton.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.ContentSendButton;
+            this.tagButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tagButton.Location = new System.Drawing.Point(171, 92);
+            this.tagButton.Name = "tagButton";
+            this.tagButton.Size = new System.Drawing.Size(75, 26);
+            this.tagButton.TabIndex = 5;
+            this.tagButton.TabStop = false;
+            this.tagButton.Click += new System.EventHandler(this.tagButton_Click);
             // 
             // addVideoButton
             // 
@@ -162,6 +189,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.notificationButton)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tagButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addVideoButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addPhotoButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sendButton)).EndInit();
@@ -180,5 +208,7 @@
         private System.Windows.Forms.Label sendLabel;
         private System.Windows.Forms.PictureBox addVideoButton;
         private System.Windows.Forms.PictureBox addPhotoButton;
+        private System.Windows.Forms.Label tagLabel;
+        private System.Windows.Forms.PictureBox tagButton;
     }
 }
