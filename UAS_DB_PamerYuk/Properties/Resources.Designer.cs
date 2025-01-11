@@ -243,6 +243,16 @@ namespace UAS_DB_PamerYuk.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PhotoAddedButton {
+            get {
+                object obj = ResourceManager.GetObject("PhotoAddedButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ProfileButton {
             get {
                 object obj = ResourceManager.GetObject("ProfileButton", resourceCulture);
@@ -266,6 +276,26 @@ namespace UAS_DB_PamerYuk.Properties {
         internal static System.Drawing.Bitmap profileFrame {
             get {
                 object obj = ResourceManager.GetObject("profileFrame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemovePhotoButton {
+            get {
+                object obj = ResourceManager.GetObject("RemovePhotoButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RemoveVideoButton {
+            get {
+                object obj = ResourceManager.GetObject("RemoveVideoButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -396,6 +426,16 @@ namespace UAS_DB_PamerYuk.Properties {
         internal static System.Drawing.Bitmap UploadPane {
             get {
                 object obj = ResourceManager.GetObject("UploadPane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VideoAddedButton {
+            get {
+                object obj = ResourceManager.GetObject("VideoAddedButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

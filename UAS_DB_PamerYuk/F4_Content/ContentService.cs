@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System.Windows.Documents;
 using System.Collections.Generic;
 using UAS_DB_PamerYuk.Repository.DAO;
+using MSVidCtlLib;
 
 namespace UAS_DB_PamerYuk.F2_Friendship
 {
@@ -25,6 +26,27 @@ namespace UAS_DB_PamerYuk.F2_Friendship
         public void AcceptFriendRequest(User receiver, User sender)
         {
             if (!userDAO.Update_AcceptFriend(receiver, sender)) throw new System.Exception("GAGAL MENERIMA PERMINTAAN PERTEMANAN");
+        }
+
+        public int SaveKonten(Konten konten)
+        {
+            return kontenDAO.Insert_Content(konten);
+        }
+
+        public List<User> GetFriends(User user)
+        {
+            return userDAO.Read_AllFriend(user, UserDAO.FriendshipStatus.FRIEND);
+        }
+
+        public void TagUser(Konten konten, User user)
+        {
+            kontenDAO.Insert_LikeOrTag(KontenDAO.Table.TAG, konten, user);
+        }
+
+        public List<Konten> GetKontenTeman(User user)
+        {
+
+            return kontenDAO.Read_Content(user, KontenDAO.OwnedBy.FRIEND);
         }
     }
 }
