@@ -73,6 +73,7 @@
             this.notificationButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.notificationButton.TabIndex = 6;
             this.notificationButton.TabStop = false;
+            this.notificationButton.Click += new System.EventHandler(this.notificationButton_Click);
             // 
             // panel1
             // 
@@ -130,6 +131,7 @@
             this.sendButton.Size = new System.Drawing.Size(75, 26);
             this.sendButton.TabIndex = 1;
             this.sendButton.TabStop = false;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // captionTextBox
             // 

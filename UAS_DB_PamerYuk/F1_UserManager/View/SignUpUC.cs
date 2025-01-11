@@ -52,6 +52,8 @@ namespace UAS_DB_PamerYuk.F1_UserManager
                 Kota kota = comboBox_Kota.SelectedItem as Kota;
                 string path = fileRepo.StoreImage(panel_ProfilePict.BackgroundImage); // Menyimpan gambar ke File Storage
 
+                service.CheckUsername(username);
+
                 User user = new User(username, password, tglLahir, noKtp, path, kota);
                 service.RegisterUser(user);
 

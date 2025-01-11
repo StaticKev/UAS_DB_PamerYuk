@@ -23,7 +23,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
                 Margin = new Padding(0)
             };
 
-            HomeMenuUC hmu = new HomeMenuUC();
+            HomeMenuUC hmu = new HomeMenuUC(mainForm, this, service);
             hmu.BackColor = ColorUtil.palette["soft-white"];
 
             buttonPanel.SetBounds(0, 0, hmu.Size.Width, hmu.Size.Height);

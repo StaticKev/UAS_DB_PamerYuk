@@ -38,9 +38,9 @@
             this.lblHeaderChat.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeaderChat.Location = new System.Drawing.Point(13, 23);
             this.lblHeaderChat.Name = "lblHeaderChat";
-            this.lblHeaderChat.Size = new System.Drawing.Size(91, 25);
+            this.lblHeaderChat.Size = new System.Drawing.Size(73, 25);
             this.lblHeaderChat.TabIndex = 6;
-            this.lblHeaderChat.Text = "Chat | ";
+            this.lblHeaderChat.Text = "Chat ";
             // 
             // flp
             // 

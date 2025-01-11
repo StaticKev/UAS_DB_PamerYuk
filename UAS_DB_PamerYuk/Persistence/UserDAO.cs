@@ -100,15 +100,30 @@ namespace UAS_DB_PamerYuk.Repository.DAO
         {
             List<User> result = new List<User>();
 
-            string isFriend = status.Equals(FriendshipStatus.FRIEND) ? "NOT NULL" : "NULL";
-            string sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
-                            FROM `user` u 
-                            INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
-                            INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
-                            WHERE (t.`username1` = '{user.Username}'
-                            OR t.`username2` = '{user.Username}')
-                            AND u.`username` != '{user.Username}'
-                            AND t.`tglberteman` IS {isFriend}";
+            string sql = "";
+
+            if (status.Equals(FriendshipStatus.FRIEND))
+            {
+                sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                         FROM `user` u 
+                         INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
+                         INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
+                         WHERE (t.`username1` = '{user.Username}'
+                         OR t.`username2` = '{user.Username}')
+                         AND u.`username` != '{user.Username}'
+                         AND t.`tglberteman` IS NOT NULL";
+            } 
+            else
+            {
+                sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
+                         FROM `user` u 
+                         INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
+                         INNER JOIN `kota` k ON (u.`kota_id` = k.`id`)
+                         WHERE t.`username2` = '{user.Username}'
+                         AND u.`username` != '{user.Username}'
+                         AND t.`tglberteman` IS NULL";
+            }
+
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();
 
