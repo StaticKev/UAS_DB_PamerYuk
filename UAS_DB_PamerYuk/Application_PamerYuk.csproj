@@ -115,6 +115,12 @@
     <Compile Include="F4_Content\View\NotificationUC.Designer.cs">
       <DependentUpon>NotificationUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="F4_Content\View\OverviewUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F4_Content\View\OverviewUserControl.Designer.cs">
+      <DependentUpon>OverviewUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="F4_Content\View\SingleTagUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -285,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\NotificationUC.resx">
       <DependentUpon>NotificationUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F4_Content\View\OverviewUserControl.resx">
+      <DependentUpon>OverviewUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\SingleContentUC.resx">
       <DependentUpon>SingleContentUC.cs</DependentUpon>

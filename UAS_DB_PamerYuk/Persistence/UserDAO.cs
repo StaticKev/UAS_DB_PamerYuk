@@ -75,6 +75,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             sql = $@"SELECT u.`username`, u.`tgllahir`, u.`noKTP`, u.`foto`, k.`id`, k.`nama`
                      FROM `user` u
                      INNER JOIN `{table.ToString()}` j ON (u.`username` = j.`username`)
+                     INNER JOIN `kota` k ON (u.`Kota_id` = k.`id`)
                      WHERE j.`konten_id` = {id}";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             MySqlDataReader resultSet = cmd.ExecuteReader();

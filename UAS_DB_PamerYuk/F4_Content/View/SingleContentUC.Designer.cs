@@ -133,6 +133,7 @@
             this.optionsButton.Size = new System.Drawing.Size(15, 15);
             this.optionsButton.TabIndex = 15;
             this.optionsButton.TabStop = false;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // commentButton
             // 

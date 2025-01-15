@@ -64,6 +64,16 @@ namespace UAS_DB_PamerYuk.F2_Friendship
             return kontenDAO.Check_Like(konten, user);
         }
 
+        public List<User> RetrievePostLike(Konten konten)
+        {
+            return userDAO.Read_FindById(UserDAO.Table.LIKE, konten.Id);
+        }
+
+        public List<User> RetrievePostTag(Konten konten)
+        {
+            return userDAO.Read_FindById(UserDAO.Table.TAG, konten.Id);
+        }
+
         public void LikeContent(Konten konten, User user)
         {
             kontenDAO.Insert_LikeOrTag(KontenDAO.Table.LIKE, konten, user);

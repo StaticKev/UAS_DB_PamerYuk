@@ -157,15 +157,30 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         {
             if (service.UserLikes(konten, mainForm.currentUser))
             {
-                Console.WriteLine("============================== DISLIKE");
                 likeButton.BackgroundImage = Properties.Resources.LikeButton;
                 service.DislikeContent(konten, mainForm.currentUser);
             } 
             else
             {
-                Console.WriteLine("============================== LIKE");
                 likeButton.BackgroundImage = Properties.Resources.LikeButton_Clicked;
                 service.LikeContent(konten, mainForm.currentUser);
+            }
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            if (contentUC != null)
+            {
+                OverviewUserControl uc = new OverviewUserControl(contentUC, service, konten);
+                contentUC.flp.Hide();
+                contentUC.Controls.Add(uc);
+            }
+            else
+            {
+                OverviewUserControl uc = new OverviewUserControl(accountUC, service, konten);
+                accountUC.flp_content.Hide();
+                accountUC.panel_profile.Hide();
+                accountUC.Controls.Add(uc);
             }
         }
     }
