@@ -2,7 +2,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Media;
 using UAS_DB_PamerYuk.F2_Friendship;
 using UAS_DB_PamerYuk.Persistence;
 using UAS_DB_PamerYuk.Utility;
@@ -15,7 +14,6 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         private readonly Panel panel;
         private readonly Konten konten;
         private readonly FileRepo fileRepo;
-
 
         public SingleContentUC(ContentService service, Panel panel, Konten konten)
         {
@@ -40,63 +38,69 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
             if (konten != null)
             {
-                label_caption.Text = konten.Caption;
                 usernameLabel.Text = konten.User.Username;
-                // pPictPanel.BackgroundImage = fileRepo.RetrieveImage(konten.User.Foto);
-                // contentPictBox.BackgroundImage = fileRepo.RetrieveImage(konten.Foto);
+                pPictPanel.BackgroundImage = fileRepo.RetrieveImage(konten.User.Foto);
+
+                // Memindahkan control berdasarkan ada tidaknya caption
+                if (!konten.Caption.Equals("-"))
+                {
+                    label_caption.Text = konten.Caption;
+
+                    int descHeight = TextRenderer.MeasureText(label_caption.Text, label_caption.Font).Height * ((label_caption.Text.Length / 70 + 1));
+                    label_caption.Size = new Size(350, descHeight);
+
+                    panel.Size = new Size(panel.Size.Width, panel.Size.Height + descHeight - 1);
+                    this.Size = new Size(this.Size.Width, this.Size.Height + descHeight - 1);
+
+                    int postedOnPositionY = label_caption.Location.Y + label_caption.Size.Height + 6;
+                    label_postedOn.Location = new Point(label_postedOn.Location.X, postedOnPositionY);
+                }
+
+                // Memindahkan control berdasarkan ada tidaknya gambar
+                if (!konten.Foto.Equals("-")) contentPictBox.Image = fileRepo.RetrieveImage(konten.Foto);
+                else
+                {
+                    contentPictBox.Hide();
+                    panel.Size = new Size(panel.Size.Width, panel.Size.Height - contentPictBox.Height);
+                    this.Size = new Size(this.Size.Width, this.Size.Height - contentPictBox.Height);
+                    label_caption.Location = new Point(label_caption.Location.X, label_caption.Location.Y - contentPictBox.Height);
+                    likeButton.Location = new Point(likeButton.Location.X, likeButton.Location.Y - contentPictBox.Height);
+                    commentButton.Location = new Point(commentButton.Location.X, commentButton.Location.Y - contentPictBox.Height);
+                    label_postedOn.Location = new Point(label_postedOn.Location.X, label_postedOn.Location.Y - contentPictBox.Height);
+                }
+
+                // Memindahkan control berdasarkan rasio gambar
+                if (!konten.Foto.Equals("-"))
+                {
+                    Image image = fileRepo.RetrieveImage(konten.Foto); // Image dari konten
+                    Console.WriteLine($"{image.Size.Width} / {image.Size.Height} === {contentPictBox.Size.Width} / {contentPictBox.Size.Height}");
+
+                    double actualRatio = (double) image.Size.Width / image.Size.Height;
+                    double pictBoxRatio = (double) contentPictBox.Size.Width / contentPictBox.Size.Height;
+
+                    if (actualRatio != pictBoxRatio)
+                    {
+                        int pictBox_DeltaH = 0;
+
+                        // Menghitung perubahan tinggi akibat penyesuaian rasio gambar
+                        int desiredHeight = image.Size.Height * contentPictBox.Width / image.Size.Width;
+                        pictBox_DeltaH = desiredHeight - contentPictBox.Height;
+                        Console.WriteLine($"{konten.Id} -> {pictBox_DeltaH}");
+
+                        contentPictBox.Size = new Size(contentPictBox.Size.Width, contentPictBox.Size.Height + pictBox_DeltaH);
+                        label_caption.Location = new Point(label_caption.Location.X, label_caption.Location.Y + pictBox_DeltaH);
+                        likeButton.Location = new Point(likeButton.Location.X, likeButton.Location.Y + pictBox_DeltaH);
+                        commentButton.Location = new Point(commentButton.Location.X, commentButton.Location.Y + pictBox_DeltaH);
+                        label_postedOn.Location = new Point(label_postedOn.Location.X, label_postedOn.Location.Y + pictBox_DeltaH);
+
+                        if (pictBox_DeltaH > 0)
+                        {
+                            panel.Size = new Size(panel.Size.Width, panel.Size.Height + pictBox_DeltaH);
+                            this.Size = new Size(panel.Size.Width, panel.Size.Height + pictBox_DeltaH);
+                        }
+                    }
+                }
             }
-
-            int descHeight = TextRenderer.MeasureText(label_caption.Text, label_caption.Font).Height * ((label_caption.Text.Length / 70 + 1));
-            label_caption.Size = new Size(350, descHeight);
-
-            int postedOnPositionY = label_caption.Location.Y + label_caption.Size.Height + 6;
-            label_postedOn.Location = new Point(label_postedOn.Location.X, postedOnPositionY);
-
-            panel.Size = new Size(panel.Size.Width, panel.Size.Height + descHeight - 1);
-            this.Size = new Size(this.Size.Width, this.Size.Height + descHeight - 1);
-
-            // ============================== ADAPTIVE LAYOUT ============================================================
-            /*            int deltaHeight_contentPictBox = 0;
-                        Image image = Properties.Resources.AddContentButton; // Image dari konten
-
-                        // Memunculkan icon video jika konten mengandung video
-                        if (konten.Video == null) ;
-                        else;
-
-                        // Menentukan perubahan rasio picture box
-                        if (konten.Foto == null) deltaHeight_contentPictBox = -contentPictBox.Size.Height;
-                        else
-                        {
-                            if (image.Size.Width / image.Size.Height != contentPictBox.Size.Width / contentPictBox.Size.Height)
-                            {
-                                int desiredHeight = image.Size.Height * contentPictBox.Width / image.Size.Width;
-                                deltaHeight_contentPictBox = desiredHeight - contentPictBox.Height;
-                            }
-                        }
-
-                        int descHeight = 0;
-
-                        if (label_caption.Text.Length != 0)
-                        {
-                            // Menghitung tinggi caption
-                            descHeight = TextRenderer.MeasureText(label_caption.Text, label_caption.Font).Height * ((label_caption.Text.Length / 70 + 1));
-                            label_caption.Size = new Size(350, descHeight);
-
-                            // Mengubah posisi waktu posting (relatif terhadap tinggi caption)
-                            int postedOnPositionY = label_caption.Location.Y + label_caption.Size.Height + 6;
-                            label_postedOn.Location = new Point(label_postedOn.Location.X, postedOnPositionY);
-                        }
-
-                        // Teks kosong, gambar kosong, 2 2 nya ada
-
-                        // Mengubah ukuran panel dan posisi semua elemen di bawah PictBox
-                        panel.Size = new Size(panel.Size.Width, panel.Size.Height + descHeight - 1 + deltaHeight_contentPictBox);
-                        this.Size = new Size(this.Size.Width, this.Size.Height + descHeight - 1 + deltaHeight_contentPictBox);
-                        likeButton.Location = new Point(likeButton.Location.X, likeButton.Location.Y + deltaHeight_contentPictBox);
-                        commentButton.Location = new Point(commentButton.Location.X, commentButton.Location.Y + deltaHeight_contentPictBox);
-                        label_caption.Location = new Point(label_caption.Location.X, label_caption.Location.Y + deltaHeight_contentPictBox);
-                        label_postedOn.Location = new Point(label_postedOn.Location.X, label_postedOn.Location.Y + deltaHeight_contentPictBox);*/
-            // ============================== ADAPTIVE LAYOUT ============================================================
         }
 
         private void On_MouseClick(object sender, MouseEventArgs e)

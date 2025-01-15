@@ -32,15 +32,15 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
             if (ownedBy.Equals(OwnedBy.CURRENT_USER))
             {
-                sql = $@"SELECT k.`id`, k.`caption`, k.`foto`, k.`video`, k.`tglupload`, k.`username`
+                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto` `fotoK`, k.`video`, k.`tglupload`
                          FROM `konten` k
                          WHERE k.`username` = '{user.Username}'
                          ORDER BY k.`id` DESC";
             } 
             else
             {
-                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto`, k.`video`, k.`tglupload`, 
-                                u.`username`, u.`tgllahir`, u.`noktp`, u.`foto`, kt.`id` `idKota`, kt.`nama`
+                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto` `fotoK`, k.`video`, k.`tglupload`, 
+                                u.`username`, u.`tgllahir`, u.`noktp`, u.`foto` `fotoU`, kt.`id` `idKota`, kt.`nama`
                          FROM `konten` k
                          INNER JOIN `user` u ON (k.`username` = u.`username`)
                          INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
@@ -56,22 +56,29 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             while (resultSet.Read())
             {
                 int idKonten = resultSet.GetInt32("idKonten");
-                string caption = resultSet.GetString("caption") != "-" ? resultSet.GetString("caption") : null; // BISA NULL
-                string foto = resultSet.GetString("foto") != "-" ? resultSet.GetString("foto") : null; // BISA NULL
-                string video = resultSet.GetString("video") != "-" ? resultSet.GetString("video") : null; // BISA NULL
+                string caption = resultSet.GetString("caption") != "-" ? resultSet.GetString("caption") : "-"; // BISA NULL
+                string foto = resultSet.GetString("fotoK") != "-" ? resultSet.GetString("fotoK") : "-"; // BISA NULL
+                string video = resultSet.GetString("video") != "-" ? resultSet.GetString("video") : "-"; // BISA NULL
                 DateTime tglUpload = resultSet.GetDateTime("tglupload");
 
-                string username = resultSet.GetString("username");
-                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
-                string noKTP = resultSet.GetString("noktp");
-                string fotoProfil = resultSet.GetString("foto");
+                if (ownedBy.Equals(OwnedBy.CURRENT_USER))
+                {
+                    result.Add(new Konten(idKonten, user, caption, foto, video, tglUpload));
+                } 
+                else
+                {
+                    string username = resultSet.GetString("username");
+                    DateTime tglLahir = resultSet.GetDateTime("tgllahir");
+                    string noKTP = resultSet.GetString("noktp");
+                    string fotoProfil = resultSet.GetString("fotoU");
 
-                int idKota = resultSet.GetInt32("idKota");
-                string namaKota = resultSet.GetString("nama");
+                    int idKota = resultSet.GetInt32("idKota");
+                    string namaKota = resultSet.GetString("nama");
 
-                Kota k = new Kota(idKota, namaKota);
-                User u = new User(username, tglLahir, noKTP, fotoProfil, k);
-                result.Add(new Konten(idKonten, u, caption, foto, video, tglUpload));
+                    Kota k = new Kota(idKota, namaKota);
+                    User u = new User(username, tglLahir, noKTP, fotoProfil, k);
+                    result.Add(new Konten(idKonten, u, caption, foto, video, tglUpload));
+                }
             }
 
             return result;

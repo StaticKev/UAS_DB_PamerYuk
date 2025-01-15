@@ -53,24 +53,6 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
                 flp.Controls.Add(panel);
             }
-
-/*            for (int i = 1; i <= 5; i++)
-            {
-                Panel panel = new Panel
-                {
-                    BorderStyle = BorderStyle.None,
-                    Margin = new Padding(0)
-                };
-
-                SingleContentUC scu = new SingleContentUC(service, panel);
-                scu.setTestSample(i);
-                scu.BackColor = ColorUtil.palette["soft-white"];
-
-                panel.SetBounds(0, 0, scu.Size.Width, scu.Size.Height);
-                panel.Controls.Add(scu);
-
-                flp.Controls.Add(panel);
-            }*/
         }
 
         private void flp_Paint(object sender, PaintEventArgs e)

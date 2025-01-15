@@ -2,13 +2,10 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Markup;
 using System.Collections.Generic;
 using UAS_DB_PamerYuk.F2_Friendship;
-using UAS_DB_PamerYuk.F2_Friendship.View;
 using UAS_DB_PamerYuk.Persistence;
 using UAS_DB_PamerYuk.Utility;
-using System.Linq;
 
 namespace UAS_DB_PamerYuk.F4_Content.View
 {
@@ -117,21 +114,28 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             string iPath = image != null ? fileRepo.StoreImage(image) : "-";
 
             // Simpan video
-            string vPath = videoPath == null ? fileRepo.StoreVideo(videoPath) : "-";
+            string vPath = videoPath != null ? fileRepo.StoreVideo(videoPath) : "-";
 
             Konten konten = new Konten(mainForm.currentUser, caption, iPath, vPath, DateTime.Now);
 
             // Simpan ke database
-            konten.Id = service.SaveKonten(konten);
-
-            foreach (User u in taggedUser)
+            if (captionTextBox.Text.Equals("Write your caption here...") && iPath.Equals("-") && vPath.Equals("-"))
             {
-                service.TagUser(konten, u);
+                MessageBox.Show("No content to share!");
+            } 
+            else
+            {
+                konten.Id = service.SaveKonten(konten);
+
+                foreach (User u in taggedUser)
+                {
+                    service.TagUser(konten, u);
+                }
+
+                MessageBox.Show("Berhasil menyimpan konten!");
+
+                contentUC_P.MultipleContentUC_Load(sender, e);
             }
-
-            MessageBox.Show("Berhasil menyimpan konten!");
-
-            contentUC_P.MultipleContentUC_Load(sender, e);
         }
 
         private void notificationButton_Click(object sender, EventArgs e)
