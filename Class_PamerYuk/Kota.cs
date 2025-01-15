@@ -2,6 +2,7 @@
 
 namespace Class_PamerYuk
 {
+    [Serializable]
     public class Kota
     {
         #region Data Member

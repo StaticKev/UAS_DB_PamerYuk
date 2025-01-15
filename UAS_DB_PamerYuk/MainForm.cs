@@ -1,6 +1,8 @@
 ﻿using Class_PamerYuk;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using UAS_DB_PamerYuk.F1_UserManager;
 using UAS_DB_PamerYuk.F2_Friendship;
@@ -9,14 +11,12 @@ using UAS_DB_PamerYuk.F3_Chat;
 using UAS_DB_PamerYuk.F3_Chat.View;
 using UAS_DB_PamerYuk.F4_Content;
 using UAS_DB_PamerYuk.F4_Content.View;
-using UAS_DB_PamerYuk.Persistence;
 
 namespace UAS_DB_PamerYuk
 {
     public partial class MainForm : Form
     {
         public User currentUser = null; 
-        public Dictionary<string, User> userLoggedIn = new Dictionary<string, User>(); 
 
         private readonly Connection connection;
         private Control currentMenu;
@@ -28,33 +28,29 @@ namespace UAS_DB_PamerYuk
             currentMenu = null;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        public void MainForm_Load(object sender, EventArgs e)
         {
+            // Ambil user yang terakhir disimpan
 
-            // ============================== LAST LOGIN ============================================================
-/*            currentUser = ClientRepo.GetCurrentUser();
+            if (File.Exists("user.dat"))
+            {
+                try
+                {
+                    using (FileStream fs = new FileStream("user.dat", FileMode.Open))
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        currentUser = (User)formatter.Deserialize(fs);
+                    }
+                }
+                catch (Exception ex) { }
+            }
 
+            // Cek user yang terakhir disimpan
             if (currentUser == null)
             {
                 mainPanel.Hide();
                 navigationBar.Hide();
-
-                UserManagerService umService = new UserManagerService(connection);
-                LoginUC loginUc = new LoginUC(umService, this);
-                Controls.Add(loginUc);
             }
-
-            userLoggedIn = ClientRepo.GetAllUserLoggedIn();
-
-            ContentService cService = new ContentService(connection);
-            ContentUC_P contentUc = new ContentUC_P(cService, this);
-
-            currentMenu = contentUc;
-            mainPanel.Controls.Add(contentUc);*/
-            // ============================== LAST LOGIN ============================================================
-            // ============================== REPLACE LATER =========================================================
-            mainPanel.Hide();
-            navigationBar.Hide();
 
             UserManagerService umService = new UserManagerService(connection);
             LoginUC loginUc = new LoginUC(umService, this);
@@ -65,7 +61,6 @@ namespace UAS_DB_PamerYuk
 
             currentMenu = contentUc;
             mainPanel.Controls.Add(contentUc);
-            // ============================== REPLACE LATER =========================================================
 
         }
 
@@ -176,6 +171,15 @@ namespace UAS_DB_PamerYuk
             else if (currentMenu is SearchUC_P) searchButton.Image = Properties.Resources.SearchButton;
             else if (currentMenu is ChatListUC_P) chatButton.Image = Properties.Resources.ChatButton;
             else if (currentMenu is AccountUC_P) profileButton.Image = Properties.Resources.ProfileButton;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            using (FileStream fs = new FileStream("user.dat", FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, currentUser);
+            }
         }
     }
 }

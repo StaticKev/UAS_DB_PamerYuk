@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using UAS_DB_PamerYuk.F1_UserManager.View;
 using UAS_DB_PamerYuk.F2_Friendship;
 using UAS_DB_PamerYuk.Utility;
 
@@ -35,6 +34,14 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             foreach (User item in listUser)
             {
                 SingleTagUC uc = new SingleTagUC(item, mainForm, service, contentUC, homeMenu);
+                foreach(User user in homeMenu.taggedUser)
+                {
+                    if (item.Username.Equals(user.Username))
+                    {
+                        uc.buttonTag.Enabled = false;
+                        break;
+                    }
+                }
                 flp.Controls.Add(uc);
             }
         }

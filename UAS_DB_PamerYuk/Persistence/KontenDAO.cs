@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 using Class_PamerYuk;
 using MySql.Data.MySqlClient;
@@ -32,15 +33,15 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
             if (ownedBy.Equals(OwnedBy.CURRENT_USER))
             {
-                sql = $@"SELECT k.`id`, k.`caption`, k.`foto`, k.`video`, k.`tglupload`, k.`username`
+                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto` `fotoK`, k.`video`, k.`tglupload`
                          FROM `konten` k
                          WHERE k.`username` = '{user.Username}'
                          ORDER BY k.`id` DESC";
             } 
             else
             {
-                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto`, k.`video`, k.`tglupload`, 
-                                u.`username`, u.`tgllahir`, u.`noktp`, u.`foto`, kt.`id` `idKota`, kt.`nama`
+                sql = $@"SELECT k.`id` `idKonten`, k.`caption`, k.`foto` `fotoK`, k.`video`, k.`tglupload`, 
+                                u.`username`, u.`tgllahir`, u.`noktp`, u.`foto` `fotoU`, kt.`id` `idKota`, kt.`nama`
                          FROM `konten` k
                          INNER JOIN `user` u ON (k.`username` = u.`username`)
                          INNER JOIN `teman` t ON (u.`username` = t.`username1` OR u.`username` = t.`username2`)
@@ -56,22 +57,29 @@ namespace UAS_DB_PamerYuk.Repository.DAO
             while (resultSet.Read())
             {
                 int idKonten = resultSet.GetInt32("idKonten");
-                string caption = resultSet.GetString("caption") != "-" ? resultSet.GetString("caption") : null; // BISA NULL
-                string foto = resultSet.GetString("foto") != "-" ? resultSet.GetString("foto") : null; // BISA NULL
-                string video = resultSet.GetString("video") != "-" ? resultSet.GetString("video") : null; // BISA NULL
+                string caption = resultSet.GetString("caption") != "-" ? resultSet.GetString("caption") : "-"; // BISA NULL
+                string foto = resultSet.GetString("fotoK") != "-" ? resultSet.GetString("fotoK") : "-"; // BISA NULL
+                string video = resultSet.GetString("video") != "-" ? resultSet.GetString("video") : "-"; // BISA NULL
                 DateTime tglUpload = resultSet.GetDateTime("tglupload");
 
-                string username = resultSet.GetString("username");
-                DateTime tglLahir = resultSet.GetDateTime("tgllahir");
-                string noKTP = resultSet.GetString("noktp");
-                string fotoProfil = resultSet.GetString("foto");
+                if (ownedBy.Equals(OwnedBy.CURRENT_USER))
+                {
+                    result.Add(new Konten(idKonten, user, caption, foto, video, tglUpload));
+                } 
+                else
+                {
+                    string username = resultSet.GetString("username");
+                    DateTime tglLahir = resultSet.GetDateTime("tgllahir");
+                    string noKTP = resultSet.GetString("noktp");
+                    string fotoProfil = resultSet.GetString("fotoU");
 
-                int idKota = resultSet.GetInt32("idKota");
-                string namaKota = resultSet.GetString("nama");
+                    int idKota = resultSet.GetInt32("idKota");
+                    string namaKota = resultSet.GetString("nama");
 
-                Kota k = new Kota(idKota, namaKota);
-                User u = new User(username, tglLahir, noKTP, fotoProfil, k);
-                result.Add(new Konten(idKonten, u, caption, foto, video, tglUpload));
+                    Kota k = new Kota(idKota, namaKota);
+                    User u = new User(username, tglLahir, noKTP, fotoProfil, k);
+                    result.Add(new Konten(idKonten, u, caption, foto, video, tglUpload));
+                }
             }
 
             return result;
@@ -85,7 +93,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                             u.`username`, u.`tgllahir`, u.`noktp`, u.`foto`, kt.`id` `idKota`, kt.`nama`
                             FROM `komen` k 
                             INNER JOIN `user` u ON (k.`username` = u.`username`)
-                            INNER JOIN `kota` kt ON (u.`kota_id` = kt.`kota_id`)
+                            INNER JOIN `kota` kt ON (u.`kota_id` = kt.`id`)
                             WHERE k.`konten_id` = {konten.Id}
                             ORDER BY k.`id` DESC";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
@@ -147,7 +155,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
         {
             string sql = $@"INSERT INTO `komen` (`komentar`, `tgl`, `username`, `konten_id`)
                             VALUES ('{komen.Komentar}', '{komen.Tgl.ToString("yyyy-MM-dd HH:mm:ss")}', 
-                                    '{komen.User}', {konten.Id})";
+                                    '{komen.User.Username}', {konten.Id})";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             int ar = cmd.ExecuteNonQuery();
 
@@ -163,6 +171,17 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
             connection.Close();
             return ar > 0 ? true : false;
+        }
+
+        public bool Check_Like(Konten konten, User user)
+        {
+            string sql = $@"SELECT COUNT(*) FROM `like` WHERE `Konten_id` = {konten.Id} AND `username` = '{user.Username}'";
+            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
+            MySqlDataReader resultSet = cmd.ExecuteReader();
+            int result = resultSet.Read() ? resultSet.GetInt32(0) : 0;
+
+            connection.Close();
+            return result > 0 ? true : false;
         }
     }
 }

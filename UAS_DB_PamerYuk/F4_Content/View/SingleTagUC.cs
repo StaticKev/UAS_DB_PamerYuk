@@ -10,20 +10,14 @@ namespace UAS_DB_PamerYuk.F4_Content.View
     public partial class SingleTagUC : UserControl
     {
         User user;
-        MainForm mainForm;
-        ContentService service;
         FileRepo fileRepo;
-        ContentUC_P contentUC;
         HomeMenuUC hmUC;
 
         public SingleTagUC(User user, MainForm mainForm, ContentService service, ContentUC_P contentUC, HomeMenuUC hmUC)
         {
             InitializeComponent();
             this.user = user;
-            this.mainForm = mainForm;
-            this.service = service;
             fileRepo = new FileRepo();
-            this.contentUC = contentUC;
             this.hmUC = hmUC;
         }
 

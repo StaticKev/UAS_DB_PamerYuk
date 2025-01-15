@@ -140,6 +140,6 @@
         private System.Windows.Forms.Panel pPictPanel;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.Button buttonTag;
+        public System.Windows.Forms.Button buttonTag;
     }
 }

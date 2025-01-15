@@ -36,12 +36,14 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label_postedOn = new System.Windows.Forms.Label();
             this.label_caption = new System.Windows.Forms.Label();
+            this.videoButton = new System.Windows.Forms.PictureBox();
             this.optionsButton = new System.Windows.Forms.PictureBox();
             this.commentButton = new System.Windows.Forms.PictureBox();
             this.likeButton = new System.Windows.Forms.PictureBox();
             this.pPictPanel = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contentPictBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.videoButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optionsButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.likeButton)).BeginInit();
@@ -111,6 +113,16 @@
             this.label_caption.Text = "In a quiet alley, a man bled upon a hidden gem—a cozy coffee shop run by a kind ," +
     " timeless ambiance, surrounded by warm wooden decor and vintage photographs.";
             // 
+            // videoButton
+            // 
+            this.videoButton.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.CommentButton;
+            this.videoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.videoButton.Location = new System.Drawing.Point(110, 453);
+            this.videoButton.Name = "videoButton";
+            this.videoButton.Size = new System.Drawing.Size(30, 30);
+            this.videoButton.TabIndex = 16;
+            this.videoButton.TabStop = false;
+            // 
             // optionsButton
             // 
             this.optionsButton.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.OptionsButton;
@@ -121,6 +133,7 @@
             this.optionsButton.Size = new System.Drawing.Size(15, 15);
             this.optionsButton.TabIndex = 15;
             this.optionsButton.TabStop = false;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // commentButton
             // 
@@ -131,6 +144,7 @@
             this.commentButton.Size = new System.Drawing.Size(30, 30);
             this.commentButton.TabIndex = 14;
             this.commentButton.TabStop = false;
+            this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
             // 
             // likeButton
             // 
@@ -141,6 +155,7 @@
             this.likeButton.Size = new System.Drawing.Size(30, 30);
             this.likeButton.TabIndex = 13;
             this.likeButton.TabStop = false;
+            this.likeButton.Click += new System.EventHandler(this.likeButton_Click);
             // 
             // pPictPanel
             // 
@@ -179,6 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Controls.Add(this.videoButton);
             this.Controls.Add(this.optionsButton);
             this.Controls.Add(this.commentButton);
             this.Controls.Add(this.likeButton);
@@ -195,6 +211,7 @@
             this.Size = new System.Drawing.Size(382, 530);
             this.Load += new System.EventHandler(this.SingleContentUC_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.On_MouseClick);
+            ((System.ComponentModel.ISupportInitialize)(this.videoButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optionsButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.likeButton)).EndInit();
@@ -221,5 +238,6 @@
         private System.Windows.Forms.PictureBox likeButton;
         private System.Windows.Forms.PictureBox commentButton;
         private System.Windows.Forms.PictureBox optionsButton;
+        private System.Windows.Forms.PictureBox videoButton;
     }
 }

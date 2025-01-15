@@ -17,7 +17,6 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         private readonly MainForm mainForm;
         private readonly ContentService service;
         private readonly ContentUC_P contentUC_P;
-        private readonly HomeMenuUC hmUC;
 
         public NotificationUC(MainForm mainForm, ContentUC_P contentUC_P, ContentService service)
         {
@@ -25,7 +24,6 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             this.mainForm = mainForm;
             this.service = service;
             this.contentUC_P = contentUC_P;
-            this.hmUC = hmUC;
         }
 
         private void NotificationUC_Load(object sender, EventArgs e)
@@ -35,14 +33,14 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            mainForm.mainPanel.Controls.Remove(contentUC_P);
-            mainForm.mainPanel.Controls.Add(new ContentUC_P(service, mainForm));
+            contentUC_P.Controls.Remove(this);
+            contentUC_P.flp.Show();
         }
 
         public void NotificationUC_Load_1(object sender, EventArgs e)
         {
             flp.Controls.Clear();
-            foreach (User u in service.GetFriends(mainForm.currentUser))
+            foreach (User u in service.RetrieveFriendReq(mainForm.currentUser))
             {
                 flp.Controls.Add(new SingleUserRequestUC(u, mainForm, this, service));
             }

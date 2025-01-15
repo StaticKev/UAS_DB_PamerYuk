@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label_changePicture = new System.Windows.Forms.Label();
             this.panel_ProfilePict = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -47,7 +48,6 @@
             this.button_SignIn = new System.Windows.Forms.Button();
             this.label_LogIn = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_ProfilePict.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +105,6 @@
             // 
             this.textBox_NomorKTP.Location = new System.Drawing.Point(100, 444);
             this.textBox_NomorKTP.Name = "textBox_NomorKTP";
-            this.textBox_NomorKTP.PasswordChar = '*';
             this.textBox_NomorKTP.Size = new System.Drawing.Size(200, 20);
             this.textBox_NomorKTP.TabIndex = 12;
             // 
@@ -155,6 +154,17 @@
             this.panel_ProfilePict.Name = "panel_ProfilePict";
             this.panel_ProfilePict.Size = new System.Drawing.Size(150, 150);
             this.panel_ProfilePict.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.profileFrame;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(148, 148);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -216,18 +226,7 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "Already have an account?";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.profileFrame;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(148, 148);
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
-            // SignInUC
+            // SignUpUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,7 +250,7 @@
             this.Controls.Add(this.textBox_Username);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Name = "SignInUC";
+            this.Name = "SignUpUC";
             this.Size = new System.Drawing.Size(400, 700);
             this.Load += new System.EventHandler(this.SignInUserControl_Load);
             this.panel_ProfilePict.ResumeLayout(false);
