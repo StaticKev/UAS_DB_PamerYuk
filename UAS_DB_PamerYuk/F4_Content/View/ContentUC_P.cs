@@ -47,7 +47,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
                     Margin = new Padding(0)
                 };
 
-                SingleContentUC scu = new SingleContentUC(service, panel, k);
+                SingleContentUC scu = new SingleContentUC(service, panel, k, this, mainForm);
                 panel.SetBounds(0, 0, scu.Size.Width, scu.Size.Height);
                 panel.Controls.Add(scu);
 

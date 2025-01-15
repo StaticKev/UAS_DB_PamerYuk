@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UAS_DB_PamerYuk.F1_UserManager;
 using UAS_DB_PamerYuk.F2_Friendship;
 using UAS_DB_PamerYuk.Persistence;
 using UAS_DB_PamerYuk.Utility;
@@ -14,14 +15,30 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         private readonly Panel panel;
         private readonly Konten konten;
         private readonly FileRepo fileRepo;
+        private readonly ContentUC_P contentUC;
+        private readonly AccountUC_P accountUC;
+        private readonly MainForm mainForm;
 
-        public SingleContentUC(ContentService service, Panel panel, Konten konten)
+        public SingleContentUC(ContentService service, Panel panel, Konten konten, ContentUC_P contentUC, MainForm mainForm)
         {
             InitializeComponent();
             this.service = service;
             this.panel = panel;
             this.konten = konten;
             fileRepo = new FileRepo();
+            this.contentUC = contentUC;
+            this.mainForm = mainForm;
+        }
+
+        public SingleContentUC(ContentService service, Panel panel, Konten konten, AccountUC_P accountUC, MainForm mainForm)
+        {
+            InitializeComponent();
+            this.service = service;
+            this.panel = panel;
+            this.konten = konten;
+            fileRepo = new FileRepo();
+            this.accountUC = accountUC;
+            this.mainForm = mainForm;
         }
 
         // TEST PURPOSE ONLY!
@@ -40,6 +57,18 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             {
                 usernameLabel.Text = konten.User.Username;
                 pPictPanel.BackgroundImage = fileRepo.RetrieveImage(konten.User.Foto);
+
+                // Mengecek like
+                if (service.UserLikes(konten, mainForm.currentUser))
+                {
+                    likeButton.BackgroundImage = Properties.Resources.LikeButton_Clicked;
+                }
+                else
+                {
+                    likeButton.BackgroundImage = Properties.Resources.LikeButton;
+                }
+
+                if (konten.Video.Equals("-")) videoButton.Hide();
 
                 // Memindahkan control berdasarkan ada tidaknya caption
                 if (!konten.Caption.Equals("-"))
@@ -105,42 +134,38 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
         private void On_MouseClick(object sender, MouseEventArgs e)
         {
-
+            
         }
 
-        // TEST PURPOSE ONLY!
-        public void setTestSample(int index)
+        private void commentButton_Click(object sender, EventArgs e)
         {
-            if (index == 2)
+            if (contentUC != null)
             {
-                pPictPanel.BackgroundImage = Properties.Resources.sampleUser2;
-                contentPictBox.Image = Properties.Resources.sampleContent2;
-                usernameLabel.Text = "eunwo.o_c";
-                label_caption.Text = "With the soft patter of rain against the window, they settled into their favorite chair, " +
-                    "cradling a freshly made egg mayo sandwich. The creamy blend of eggs and mayonnaise, nestled between " +
-                    "perfectly toasted bread, felt like the ultimate comfort on this gray afternoon. Outside, the rain " +
-                    "painted the world in hues of silver and green, each droplet a tiny symphony on the glass. As they took " +
-                    "a bite, the richness of the sandwich harmonized with the calming rhythm of the storm. The air smelled " +
-                    "of rain-soaked earth, mingling with the warmth of the kitchen—a perfect pairing. Sometimes, the " +
-                    "simplest pleasures, like a good sandwich and a rainy day, create the most unforgettable moments.";
-            } else if (index == 3)
+                CommentUC commentUC = new CommentUC(mainForm, contentUC, konten, service);
+                contentUC.Controls.Add(commentUC);
+                contentUC.flp.Hide();
+            } else
             {
-                pPictPanel.BackgroundImage = Properties.Resources.sampleUser4;
-                contentPictBox.Image = Properties.Resources.sampleContent4;
-                usernameLabel.Text = "skuukzky";
-                label_caption.Text = "...";
-            } else if (index == 4)
+                CommentUC commentUC = new CommentUC(mainForm, accountUC, konten, service);
+                accountUC.Controls.Add(contentUC);
+                accountUC.flp_content.Hide();
+                accountUC.panel_profile.Hide();
+            }
+        }
+
+        private void likeButton_Click(object sender, EventArgs e)
+        {
+            if (service.UserLikes(konten, mainForm.currentUser))
             {
-                pPictPanel.BackgroundImage = Properties.Resources.sampleUser5;
-                contentPictBox.Image = Properties.Resources.sampleContent3;
-                usernameLabel.Text = "xeesoxee";
-                label_caption.Text = "Embracing the summer vibes through the day!";
-            } else if (index == 5)
+                Console.WriteLine("============================== DISLIKE");
+                likeButton.BackgroundImage = Properties.Resources.LikeButton;
+                service.DislikeContent(konten, mainForm.currentUser);
+            } 
+            else
             {
-                pPictPanel.BackgroundImage = Properties.Resources.sampleUser3;
-                contentPictBox.Image = Properties.Resources.sampleContent5;
-                usernameLabel.Text = "donlee";
-                label_caption.Text = "After a midnight showdown.";
+                Console.WriteLine("============================== LIKE");
+                likeButton.BackgroundImage = Properties.Resources.LikeButton_Clicked;
+                service.LikeContent(konten, mainForm.currentUser);
             }
         }
     }

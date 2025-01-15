@@ -21,6 +21,13 @@ namespace Class_PamerYuk
             Tgl = tgl;
             User = user;
         }
+
+        public Komen(string komentar, DateTime tgl, User user)
+        {
+            Komentar = komentar;
+            Tgl = tgl;
+            User = user;
+        }
         #endregion
 
         #region Property

@@ -103,6 +103,12 @@
     <Compile Include="F3_Chat\View\SingleContactUC.Designer.cs">
       <DependentUpon>SingleContactUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="F4_Content\View\CommentUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="F4_Content\View\CommentUC.Designer.cs">
+      <DependentUpon>CommentUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="F4_Content\View\NotificationUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F3_Chat\View\SingleContactUC.resx">
       <DependentUpon>SingleContactUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F4_Content\View\CommentUC.resx">
+      <DependentUpon>CommentUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F4_Content\View\ContentUC_P.resx">
       <DependentUpon>ContentUC_P.cs</DependentUpon>

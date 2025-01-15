@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 using Class_PamerYuk;
 using MySql.Data.MySqlClient;
@@ -92,7 +93,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
                             u.`username`, u.`tgllahir`, u.`noktp`, u.`foto`, kt.`id` `idKota`, kt.`nama`
                             FROM `komen` k 
                             INNER JOIN `user` u ON (k.`username` = u.`username`)
-                            INNER JOIN `kota` kt ON (u.`kota_id` = kt.`kota_id`)
+                            INNER JOIN `kota` kt ON (u.`kota_id` = kt.`id`)
                             WHERE k.`konten_id` = {konten.Id}
                             ORDER BY k.`id` DESC";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
@@ -154,7 +155,7 @@ namespace UAS_DB_PamerYuk.Repository.DAO
         {
             string sql = $@"INSERT INTO `komen` (`komentar`, `tgl`, `username`, `konten_id`)
                             VALUES ('{komen.Komentar}', '{komen.Tgl.ToString("yyyy-MM-dd HH:mm:ss")}', 
-                                    '{komen.User}', {konten.Id})";
+                                    '{komen.User.Username}', {konten.Id})";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             int ar = cmd.ExecuteNonQuery();
 
@@ -170,6 +171,17 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
             connection.Close();
             return ar > 0 ? true : false;
+        }
+
+        public bool Check_Like(Konten konten, User user)
+        {
+            string sql = $@"SELECT COUNT(*) FROM `like` WHERE `Konten_id` = {konten.Id} AND `username` = '{user.Username}'";
+            MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
+            MySqlDataReader resultSet = cmd.ExecuteReader();
+            int result = resultSet.Read() ? resultSet.GetInt32(0) : 0;
+
+            connection.Close();
+            return result > 0 ? true : false;
         }
     }
 }
