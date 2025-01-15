@@ -39,6 +39,7 @@
             this.button_kisahHidup = new System.Windows.Forms.Button();
             this.label_noKtp = new System.Windows.Forms.Label();
             this.label_tanggalLahir = new System.Windows.Forms.Label();
+            this.label_logout = new System.Windows.Forms.Label();
             this.panel_ProfilePict.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -143,10 +144,22 @@
             this.label_tanggalLahir.TabIndex = 30;
             this.label_tanggalLahir.Text = "00-00-0000";
             // 
+            // label_logout
+            // 
+            this.label_logout.AutoSize = true;
+            this.label_logout.ForeColor = System.Drawing.Color.Blue;
+            this.label_logout.Location = new System.Drawing.Point(311, 137);
+            this.label_logout.Name = "label_logout";
+            this.label_logout.Size = new System.Drawing.Size(36, 13);
+            this.label_logout.TabIndex = 31;
+            this.label_logout.Text = "logout";
+            this.label_logout.Click += new System.EventHandler(this.label_logout_Click);
+            // 
             // ProfileUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_logout);
             this.Controls.Add(this.label_tanggalLahir);
             this.Controls.Add(this.label_noKtp);
             this.Controls.Add(this.button_kisahHidup);
@@ -180,5 +193,6 @@
         private System.Windows.Forms.Button button_kisahHidup;
         private System.Windows.Forms.Label label_noKtp;
         private System.Windows.Forms.Label label_tanggalLahir;
+        private System.Windows.Forms.Label label_logout;
     }
 }

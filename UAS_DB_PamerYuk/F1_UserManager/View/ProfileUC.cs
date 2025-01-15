@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +58,21 @@ namespace UAS_DB_PamerYuk.F1_UserManager.View
             accountUc.flp_content.Hide();
             ListKisahHidup uc = new ListKisahHidup(mainForm, accountUc, service);
             accountUc.Controls.Add(uc);
+        }
+
+        private void label_logout_Click(object sender, EventArgs e)
+        {
+            mainForm.currentUser = null;
+            mainForm.MainForm_Load(sender, e);
+
+
+/*            using (var fs = new FileStream("user.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, mainForm.currentUser);
+            }*/
+
+            using (FileStream fileStream = new FileStream("user.dat", FileMode.Truncate));
         }
     }
 }

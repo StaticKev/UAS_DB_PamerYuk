@@ -2,6 +2,7 @@
 
 namespace Class_PamerYuk
 {
+    [Serializable]
     public class User
     {
         #region Data Member
