@@ -183,10 +183,11 @@ namespace UAS_DB_PamerYuk.Repository.DAO
 
         public bool Insert_RegisterUser(User user)
         {
-            string sql = $@"INSERT INTO `user` (`username`, `password`, `tgllahir`, `noktp`, `foto`, `kota_id`) 
+            string sql = $@"INSERT INTO `user` (`username`, `password`, `tgllahir`, `noktp`, `foto`, `kota_id`, `nama_lengkap`, `email`, `foto_diri`) 
                             VALUES ('{user.Username}', '{user.Password}', 
                                     '{user.TglLahir.ToString("yyyy-MM-dd")}', '{user.NoKTP}', 
-                                    '{user.Foto}', {user.Kota.Id})";
+                                    '{user.Foto}', {user.Kota.Id}, 
+                                    '{user.NamaLengkap}', '{user.Email}', '{user.FotoDiri}')";
             MySqlCommand cmd = new MySqlCommand(sql, connection.GetConnection());
             int ar = cmd.ExecuteNonQuery();
 

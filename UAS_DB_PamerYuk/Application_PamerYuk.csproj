@@ -133,7 +133,6 @@
     <Compile Include="F4_Content\View\SingleUserRequestUC.Designer.cs">
       <DependentUpon>SingleUserRequestUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Persistence\ClientRepo.cs" />
     <Compile Include="Persistence\FileRepo.cs" />
     <Compile Include="Persistence\KisahHidupDAO.cs" />
     <Compile Include="Persistence\KontenDAO.cs" />

@@ -46,15 +46,20 @@ namespace UAS_DB_PamerYuk.F1_UserManager
             try
             {
                 string username = textBox_Username.Text;
+
+                service.CheckUsername(username);
+
                 string password = textBox_Password.Text;
                 DateTime tglLahir = dateTimePicker_TglLahir.Value;
                 string noKtp = textBox_NomorKTP.Text;
                 Kota kota = comboBox_Kota.SelectedItem as Kota;
                 string path = fileRepo.StoreImage(panel_ProfilePict.BackgroundImage); // Menyimpan gambar ke File Storage
 
-                service.CheckUsername(username);
+                string namaLengkap = textBox_namaLengkap.Text;
+                string email = textBox_email.Text;
+                string path2 = fileRepo.StoreImage(pictureBox2.BackgroundImage);
 
-                User user = new User(username, password, tglLahir, noKtp, path, kota);
+                User user = new User(username, password, tglLahir, noKtp, path, kota, namaLengkap, email, path2);
                 service.RegisterUser(user);
 
                 MessageBox.Show("Success!");
@@ -77,6 +82,20 @@ namespace UAS_DB_PamerYuk.F1_UserManager
                 string path = fd.FileName;
 
                 panel_ProfilePict.BackgroundImage = Image.FromFile(path);
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog fd = new System.Windows.Forms.OpenFileDialog();
+            fd.Filter = "Image Files|*.jpeg;*.jpg;*.png;";
+            fd.Title = "Pilih sebuah gambar!";
+
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                string path = fd.FileName;
+
+                pictureBox2.BackgroundImage = Image.FromFile(path);
             }
         }
     }
