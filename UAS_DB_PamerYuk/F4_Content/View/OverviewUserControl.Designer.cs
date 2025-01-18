@@ -67,9 +67,9 @@
             this.label2.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 293);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 25);
+            this.label2.Size = new System.Drawing.Size(55, 25);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Comment";
+            this.label2.Text = "Tag";
             // 
             // button_Back
             // 

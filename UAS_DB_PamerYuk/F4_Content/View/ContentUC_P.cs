@@ -7,7 +7,6 @@ using UAS_DB_PamerYuk.Utility;
 
 namespace UAS_DB_PamerYuk.F4_Content.View
 {
-
     public partial class ContentUC_P : UserControl
     {
         private readonly ContentService service;

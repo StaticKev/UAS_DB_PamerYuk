@@ -147,7 +147,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
             } else
             {
                 CommentUC commentUC = new CommentUC(mainForm, accountUC, konten, service);
-                accountUC.Controls.Add(contentUC);
+                accountUC.Controls.Add(commentUC);
                 accountUC.flp_content.Hide();
                 accountUC.panel_profile.Hide();
             }

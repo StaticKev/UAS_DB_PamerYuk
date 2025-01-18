@@ -1,6 +1,5 @@
 ﻿using Class_PamerYuk;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -175,11 +174,14 @@ namespace UAS_DB_PamerYuk
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            using (FileStream fs = new FileStream("user.dat", FileMode.Create))
+            try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fs, currentUser);
-            }
+                using (FileStream fs = new FileStream("user.dat", FileMode.Create))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fs, currentUser);
+                }
+            } catch (Exception ex) { }
         }
     }
 }

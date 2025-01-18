@@ -12,6 +12,10 @@ namespace Class_PamerYuk
         private string noKTP;
         private string foto;
         private Kota kota;
+
+        private string namaLengkap;
+        private string email;
+        private string fotoDiri;
         #endregion
 
         #region Constructor
@@ -38,6 +42,20 @@ namespace Class_PamerYuk
             NoKTP = noKTP;
             Foto = foto;
             Kota = kota;
+        }
+
+        public User(string username, string password, DateTime tglLahir, string noKTP, string foto, Kota kota, string namaLengkap, string email, string fotoDiri)
+        {
+            Username = username;
+            Password = password;
+            TglLahir = tglLahir;
+            NoKTP = noKTP;
+            Foto = foto;
+            Kota = kota;
+
+            NamaLengkap = namaLengkap;
+            Email = email;
+            FotoDiri = fotoDiri;
         }
         #endregion
 
@@ -103,6 +121,9 @@ namespace Class_PamerYuk
                 else kota = value;
             } 
         }
+        public string NamaLengkap { get => namaLengkap; set => namaLengkap = value; }
+        public string Email { get => email; set => email = value; }
+        public string FotoDiri { get => fotoDiri; set => fotoDiri = value; }
         #endregion
     }
 }

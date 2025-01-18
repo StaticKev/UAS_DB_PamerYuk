@@ -63,16 +63,10 @@ namespace UAS_DB_PamerYuk.F1_UserManager.View
         private void label_logout_Click(object sender, EventArgs e)
         {
             mainForm.currentUser = null;
-            mainForm.MainForm_Load(sender, e);
-
-
-/*            using (var fs = new FileStream("user.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fs, mainForm.currentUser);
-            }*/
 
             using (FileStream fileStream = new FileStream("user.dat", FileMode.Truncate));
+            mainForm.mainPanel.Controls.Remove(accountUc);
+            mainForm.MainForm_Load(sender, e);
         }
     }
 }

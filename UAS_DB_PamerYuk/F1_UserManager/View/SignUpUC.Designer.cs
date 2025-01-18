@@ -48,13 +48,19 @@
             this.button_SignIn = new System.Windows.Forms.Button();
             this.label_LogIn = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBox_namaLengkap = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_email = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel_ProfilePict.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_Password
             // 
-            this.textBox_Password.Location = new System.Drawing.Point(100, 325);
+            this.textBox_Password.Location = new System.Drawing.Point(100, 270);
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.PasswordChar = '*';
             this.textBox_Password.Size = new System.Drawing.Size(200, 20);
@@ -62,7 +68,7 @@
             // 
             // textBox_Username
             // 
-            this.textBox_Username.Location = new System.Drawing.Point(100, 266);
+            this.textBox_Username.Location = new System.Drawing.Point(100, 211);
             this.textBox_Username.Name = "textBox_Username";
             this.textBox_Username.Size = new System.Drawing.Size(200, 20);
             this.textBox_Username.TabIndex = 7;
@@ -70,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(176, 310);
+            this.label3.Location = new System.Drawing.Point(176, 255);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 6;
@@ -79,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 250);
+            this.label2.Location = new System.Drawing.Point(173, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 5;
@@ -87,7 +93,7 @@
             // 
             // dateTimePicker_TglLahir
             // 
-            this.dateTimePicker_TglLahir.Location = new System.Drawing.Point(100, 385);
+            this.dateTimePicker_TglLahir.Location = new System.Drawing.Point(100, 330);
             this.dateTimePicker_TglLahir.Name = "dateTimePicker_TglLahir";
             this.dateTimePicker_TglLahir.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_TglLahir.TabIndex = 9;
@@ -95,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 369);
+            this.label1.Location = new System.Drawing.Point(177, 314);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 10;
@@ -103,7 +109,7 @@
             // 
             // textBox_NomorKTP
             // 
-            this.textBox_NomorKTP.Location = new System.Drawing.Point(100, 444);
+            this.textBox_NomorKTP.Location = new System.Drawing.Point(100, 389);
             this.textBox_NomorKTP.Name = "textBox_NomorKTP";
             this.textBox_NomorKTP.Size = new System.Drawing.Size(200, 20);
             this.textBox_NomorKTP.TabIndex = 12;
@@ -111,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(175, 429);
+            this.label4.Location = new System.Drawing.Point(175, 374);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 11;
@@ -120,7 +126,7 @@
             // comboBox_Kota
             // 
             this.comboBox_Kota.FormattingEnabled = true;
-            this.comboBox_Kota.Location = new System.Drawing.Point(100, 504);
+            this.comboBox_Kota.Location = new System.Drawing.Point(100, 449);
             this.comboBox_Kota.Name = "comboBox_Kota";
             this.comboBox_Kota.Size = new System.Drawing.Size(200, 21);
             this.comboBox_Kota.TabIndex = 13;
@@ -128,7 +134,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(188, 488);
+            this.label5.Location = new System.Drawing.Point(188, 433);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 13);
             this.label5.TabIndex = 14;
@@ -139,7 +145,7 @@
             this.label_changePicture.AutoSize = true;
             this.label_changePicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.label_changePicture.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label_changePicture.Location = new System.Drawing.Point(160, 197);
+            this.label_changePicture.Location = new System.Drawing.Point(160, 177);
             this.label_changePicture.Name = "label_changePicture";
             this.label_changePicture.Size = new System.Drawing.Size(79, 13);
             this.label_changePicture.TabIndex = 15;
@@ -150,7 +156,7 @@
             // 
             this.panel_ProfilePict.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_ProfilePict.Controls.Add(this.pictureBox1);
-            this.panel_ProfilePict.Location = new System.Drawing.Point(125, 39);
+            this.panel_ProfilePict.Location = new System.Drawing.Point(125, 19);
             this.panel_ProfilePict.Name = "panel_ProfilePict";
             this.panel_ProfilePict.Size = new System.Drawing.Size(150, 150);
             this.panel_ProfilePict.TabIndex = 16;
@@ -168,35 +174,35 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(121, 37);
+            this.panel1.Location = new System.Drawing.Point(121, 17);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(160, 3);
             this.panel1.TabIndex = 17;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(121, 188);
+            this.panel2.Location = new System.Drawing.Point(121, 168);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(160, 3);
             this.panel2.TabIndex = 18;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(274, 33);
+            this.panel3.Location = new System.Drawing.Point(274, 13);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(3, 160);
             this.panel3.TabIndex = 19;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(123, 31);
+            this.panel4.Location = new System.Drawing.Point(123, 11);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(3, 160);
             this.panel4.TabIndex = 20;
             // 
             // button_SignIn
             // 
-            this.button_SignIn.Location = new System.Drawing.Point(100, 558);
+            this.button_SignIn.Location = new System.Drawing.Point(100, 612);
             this.button_SignIn.Name = "button_SignIn";
             this.button_SignIn.Size = new System.Drawing.Size(200, 40);
             this.button_SignIn.TabIndex = 21;
@@ -209,7 +215,7 @@
             this.label_LogIn.AutoSize = true;
             this.label_LogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.label_LogIn.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label_LogIn.Location = new System.Drawing.Point(248, 645);
+            this.label_LogIn.Location = new System.Drawing.Point(248, 667);
             this.label_LogIn.Name = "label_LogIn";
             this.label_LogIn.Size = new System.Drawing.Size(36, 13);
             this.label_LogIn.TabIndex = 24;
@@ -220,17 +226,65 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.label7.Location = new System.Drawing.Point(121, 645);
+            this.label7.Location = new System.Drawing.Point(121, 667);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 13);
             this.label7.TabIndex = 23;
             this.label7.Text = "Already have an account?";
+            // 
+            // textBox_namaLengkap
+            // 
+            this.textBox_namaLengkap.Location = new System.Drawing.Point(100, 509);
+            this.textBox_namaLengkap.Name = "textBox_namaLengkap";
+            this.textBox_namaLengkap.Size = new System.Drawing.Size(200, 20);
+            this.textBox_namaLengkap.TabIndex = 26;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(161, 494);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Nama Lengkap";
+            // 
+            // textBox_email
+            // 
+            this.textBox_email.Location = new System.Drawing.Point(100, 569);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(200, 20);
+            this.textBox_email.TabIndex = 28;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(182, 554);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Email";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::UAS_DB_PamerYuk.Properties.Resources.DefaultProfilePict;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(305, 67);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox2.TabIndex = 29;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // SignUpUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.textBox_email);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBox_namaLengkap);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label_LogIn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button_SignIn);
@@ -255,6 +309,7 @@
             this.Load += new System.EventHandler(this.SignInUserControl_Load);
             this.panel_ProfilePict.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +336,10 @@
         private System.Windows.Forms.Button button_SignIn;
         private System.Windows.Forms.Label label_LogIn;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_namaLengkap;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_email;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

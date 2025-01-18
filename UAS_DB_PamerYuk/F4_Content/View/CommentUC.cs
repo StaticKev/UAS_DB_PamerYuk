@@ -43,7 +43,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
         {
             Komen komen = new Komen(textBox1.Text, DateTime.Now, mainForm.currentUser);
             service.SendComment(konten, komen);
-            listBox_Comment.Items.Add($"{komen.Tgl} [{komen.User}] {komen.Komentar}");
+            listBox_Comment.Items.Add($"{komen.Tgl} [{komen.User.Username}] {komen.Komentar}");
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace UAS_DB_PamerYuk.F4_Content.View
 
             foreach (Komen k in komen)
             {
-                listBox_Comment.Items.Add($"{k.Tgl} [{k.User}] {k.Komentar}");
+                listBox_Comment.Items.Add($"{k.Tgl} [{k.User.Username}] {k.Komentar}");
             }
         }
     }
